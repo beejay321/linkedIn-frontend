@@ -1,7 +1,9 @@
+
 import './App.css';
 import React from 'react';
 import Home from './Components/Home.jsx';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
+
 import MyNav from './Components/MyNav.jsx';
 import Footer from './Components/Footer.jsx';
 import Feeds from './Components/Feeds.jsx';

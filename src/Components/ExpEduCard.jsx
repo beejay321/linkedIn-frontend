@@ -1,109 +1,94 @@
-import { Row, Col } from "react-bootstrap"
-import "../ExpEduCard.css"
-import ModalForm from "./MyModal"
-import React from "react"
+import { Row, Col } from "react-bootstrap";
+import "../ExpEduCard.css";
+import ModalForm from "./MyModal";
+import React from "react";
 
 class ExpEduCard extends React.Component {
   state = {
     expId: this.props.id,
     userId: this.props.userId,
+    userName: this.props.userName,
     experience: { ...this.props.experience },
     formRequest: "",
     expImage: null,
-  }
+  };
 
-  inputFile = React.createRef()
+  inputFile = React.createRef();
 
   handleEdit = async (e) => {
-    e.preventDefault()
-    console.log("ciaociao")
+    e.preventDefault();
+    console.log("ciaociao");
     try {
-      const response = await fetch(
-        `https://striveschool-api.herokuapp.com/api/profile/${this.state.userId}/experiences/${this.state.expId}`,
-        {
-          method: "PUT",
-          headers: {
-            Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDk4ZWNhYTYxOWU1ZDAwMTUxZjhmN2QiLCJpYXQiOjE2MjA2MzQ3OTQsImV4cCI6MTYyMTg0NDM5NH0.uEmyf94agpe9Ah6YT4Rinls_egdc0qJQR3PnsoJvS1s",
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(this.state.experience),
-        }
-      )
+      const response = await fetch(`https://api-linkedin-api.herokuapp.com/profile/${this.state.userId}/experiences/${this.state.expId}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(this.state.experience),
+      });
       if (response.ok) {
-        const data = await response.json()
-        console.log(data)
+        const data = await response.json();
+        console.log(data);
       }
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
 
-    console.log(this.inputFile)
+    console.log(this.inputFile);
 
     try {
-      const response = await fetch(
-        `https://striveschool-api.herokuapp.com/api/profile/${this.state.userId}/experiences/${this.state.expId}/picture`,
-        {
-          method: "POST",
-          headers: {
-            Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDk4ZWNhYTYxOWU1ZDAwMTUxZjhmN2QiLCJpYXQiOjE2MjA2MzQ3OTQsImV4cCI6MTYyMTg0NDM5NH0.uEmyf94agpe9Ah6YT4Rinls_egdc0qJQR3PnsoJvS1s",
-          },
-          body: this.state.expImage,
-        }
-      )
+      const response = await fetch(`https://api-linkedin-api.herokuapp.com/profile/${this.state.userId}/experiences/${this.state.expId}/picture`, {
+        method: "POST",
+
+        body: this.state.expImage,
+      });
       if (response.ok) {
-        console.log("exp image uploaded")
+        console.log("exp image uploaded");
       }
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-  }
+  };
 
   handleDelete = async (e) => {
-    e.preventDefault()
-    console.log("ciaociao")
+    e.preventDefault();
+    console.log("ciaociao");
     try {
-      const response = await fetch(
-        `https://striveschool-api.herokuapp.com/api/profile/${this.state.userId}/experiences/${this.state.expId}`,
-        {
-          method: "DELETE",
-          headers: {
-            Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDk4ZWNhYTYxOWU1ZDAwMTUxZjhmN2QiLCJpYXQiOjE2MjA2MzQ3OTQsImV4cCI6MTYyMTg0NDM5NH0.uEmyf94agpe9Ah6YT4Rinls_egdc0qJQR3PnsoJvS1s",
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(this.state.experience),
-        }
-      )
+      const response = await fetch(`https://api-linkedin-api.herokuapp.com/profile/${this.state.userId}/experiences/${this.state.expId}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(this.state.experience),
+      });
       if (response.ok) {
-        const data = await response.json()
-        console.log(data)
+        const data = await response.json();
+        console.log(data);
       }
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-  }
+  };
 
   handleChange = (e) => {
-    e.preventDefault()
-    console.log("stuff changing")
-    let id = e.target.id
+    e.preventDefault();
+    console.log("stuff changing");
+    let id = e.target.id;
     this.setState({
       experience: { ...this.state.experience, [id]: e.target.value },
-    })
-    console.log(this.state.experience)
-  }
+    });
+    console.log(this.state.experience);
+  };
 
   selectImage = (e) => {
-    e.preventDefault()
-    const file = e.target.files[0]
-    let formData = new FormData()
-    formData.append("experience", file)
+    e.preventDefault();
+    const file = e.target.files[0];
+    let formData = new FormData();
+    formData.append("experience", file);
     this.setState({
       expImage: formData,
-    })
-  }
+    });
+  };
 
   render() {
     return (
@@ -141,8 +126,8 @@ class ExpEduCard extends React.Component {
           />
         </Col>
       </Row>
-    )
+    );
   }
 }
 
-export default ExpEduCard
+export default ExpEduCard;
