@@ -15,20 +15,18 @@ class Home extends React.Component {
     user: {},
     userExperiences: [],
   }
+  // ${this.props.match.params.id}
 
   componentDidMount = async () => {
     try {
       const response = await fetch(
-        `https://striveschool-api.herokuapp.com/api/profile/${this.props.match.params.id}`,
-        {
-          headers: {
-            Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDk4ZWNhYTYxOWU1ZDAwMTUxZjhmN2QiLCJpYXQiOjE2MjA2MzQ3OTQsImV4cCI6MTYyMTg0NDM5NH0.uEmyf94agpe9Ah6YT4Rinls_egdc0qJQR3PnsoJvS1s",
-          },
-        }
+        `https://api-linkedin-api.herokuapp.com/profile/60c9be8b6f63455fa0ee7849
+        `,
+        
       )
       if (response.ok) {
         const data = await response.json()
+        console.log(data)
         this.setState({ user: data })
       }
     } catch (error) {
@@ -40,18 +38,19 @@ class Home extends React.Component {
         ? this.state.user._id
         : this.props.match.params.id
 
+    const userName = this.state.user.surname
+        
+
+
+
     try {
       const xpResponse = await fetch(
-        `https://striveschool-api.herokuapp.com/api/profile/${userId}/experiences`,
-        {
-          headers: {
-            Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDk4ZWNhYTYxOWU1ZDAwMTUxZjhmN2QiLCJpYXQiOjE2MjA2MzQ3OTQsImV4cCI6MTYyMTg0NDM5NH0.uEmyf94agpe9Ah6YT4Rinls_egdc0qJQR3PnsoJvS1s",
-          },
-        }
+        `https://api-linkedin-api.herokuapp.com/profile/${userName}/experiences`,
+        
       )
       if (xpResponse.ok) {
         const xpData = await xpResponse.json()
+        console.log(xpData)
         this.setState({ userExperiences: xpData })
       }
     } catch (error) {
@@ -65,13 +64,8 @@ class Home extends React.Component {
     }
     try {
       const response = await fetch(
-        `https://striveschool-api.herokuapp.com/api/profile/${this.props.match.params.id}`,
-        {
-          headers: {
-            Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDk4ZWNhYTYxOWU1ZDAwMTUxZjhmN2QiLCJpYXQiOjE2MjA2MzQ3OTQsImV4cCI6MTYyMTg0NDM5NH0.uEmyf94agpe9Ah6YT4Rinls_egdc0qJQR3PnsoJvS1s",
-          },
-        }
+        `https://api-linkedin-api.herokuapp.com/profile/${this.props.match.params.id}`,
+        
       )
       if (response.ok) {
         const data = await response.json()
@@ -88,13 +82,8 @@ class Home extends React.Component {
 
     try {
       const xpResponse = await fetch(
-        `https://striveschool-api.herokuapp.com/api/profile/${userId}/experiences`,
-        {
-          headers: {
-            Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDk4ZWNhYTYxOWU1ZDAwMTUxZjhmN2QiLCJpYXQiOjE2MjA2MzQ3OTQsImV4cCI6MTYyMTg0NDM5NH0.uEmyf94agpe9Ah6YT4Rinls_egdc0qJQR3PnsoJvS1s",
-          },
-        }
+        `https://api-linkedin-api.herokuapp.com/profile/${userId}/experiences`,
+        
       )
       if (xpResponse.ok) {
         const xpData = await xpResponse.json()
@@ -119,7 +108,7 @@ class Home extends React.Component {
                   surname={this.state.user.surname}
                   title={this.state.user.title}
                   area={this.state.user.area}
-                  image={this.state.user.image}
+                  image={this.state.user.avatar}
                 />
                 <CardProfile
                   title="About"
@@ -132,7 +121,8 @@ class Home extends React.Component {
                   content={
                     <ExperienceContent
                       experiences={this.state.userExperiences}
-                      user={this.state.user._id}
+                      userId={this.state.user._id}
+                      userName = {this.state.user.surname}
                     />
                   }
                 />
