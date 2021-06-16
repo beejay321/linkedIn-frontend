@@ -1,53 +1,51 @@
-import { Card, Image, Form, Button, Row, Col } from "react-bootstrap";
-import "../CardProfile.css";
-import AddPostModal from "./AddPostModal";
-import MediaModal from "./MediaModal";
-import ModalForm from "./MyModal";
-import React from "react";
+import { Card, Image, Button, Row, Col } from 'react-bootstrap';
+import '../CardProfile.css';
+import AddPostModal from './AddPostModal';
+
+import React from 'react';
 
 class AddPost extends React.Component {
   state = {
-    text: "",
-    post: undefined,
+    new: {
+      text: '',
+      user: '60c9be8b6f63455fa0ee7849',
+    },
+    cover: undefined,
   };
 
   submitPost = async (e) => {
     e.preventDefault();
     try {
       let response = await fetch(
-        "https://striveschool-api.herokuapp.com/api/posts/",
+        'https://api-linkedin-api.herokuapp.com/posts',
         {
-          method: "POST",
-          body: JSON.stringify(this.state.text),
+          method: 'POST',
+          body: JSON.stringify(this.state.new),
           headers: {
-            "Content-Type": "application/json",
-            Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDk4ZWNhYTYxOWU1ZDAwMTUxZjhmN2QiLCJpYXQiOjE2MjA2MzQ3OTQsImV4cCI6MTYyMTg0NDM5NH0.uEmyf94agpe9Ah6YT4Rinls_egdc0qJQR3PnsoJvS1s",
+            'Content-Type': 'application/json',
           },
         }
       );
 
       if (response.ok) {
-        if (this.state.post !== undefined) {
+        if (this.state.cover !== undefined) {
           const data = await response.json();
           const id = data._id;
-          console.log("this is the post id", id);
+          console.log('this is the post id', id);
+
           let newResponse = await fetch(
-            "https://striveschool-api.herokuapp.com/api/posts/" + id,
+            `https://api-linkedin-api.herokuapp.com/posts/${id}/upload`,
             {
-              method: "POST",
-              headers: {
-                Authorization:
-                  "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDk4ZWNhYTYxOWU1ZDAwMTUxZjhmN2QiLCJpYXQiOjE2MjA2MzQ3OTQsImV4cCI6MTYyMTg0NDM5NH0.uEmyf94agpe9Ah6YT4Rinls_egdc0qJQR3PnsoJvS1s",
-              },
-              body: this.state.post,
+              method: 'POST',
+
+              body: this.state.cover,
             }
           );
           if (newResponse.ok) {
-            console.log("File uploaded successfully");
+            console.log('File uploaded successfully');
           }
         } else {
-          console.log("File was not uploaded!");
+          console.log('File was not uploaded!');
         }
       }
     } catch (error) {
@@ -60,18 +58,20 @@ class AddPost extends React.Component {
     console.log(e.target.files[0]);
     const file = e.target.files[0];
     let formData = new FormData();
-    formData.append("post", file);
-    console.log(this.state.post);
+    formData.append('cover', file);
+    console.log(this.state.cover);
     console.log(formData);
     this.setState({
-      post: formData,
+      ...this.state,
+      cover: formData,
     });
   };
 
   handleChange = (e) => {
     let id = e.target.id;
     this.setState({
-      text: { [id]: e.target.value },
+      ...this.state,
+      new: { ...this.state.new, [id]: e.target.value },
     });
   };
 
@@ -93,8 +93,8 @@ class AddPost extends React.Component {
             <AddPostModal
               handleChange={this.handleChange}
               submitPost={this.submitPost}
-              text={this.state.text}
-              id={this.state.post}
+              text={this.state.new.text}
+              id={this.state.new}
               selectImage={this.selectImage}
             />
           </Card.Body>
