@@ -6,7 +6,7 @@ async function getAllPosts() {
   const url = 'https://api-linkedin-api.herokuapp.com/posts';
   const response = await fetch(url);
   const data = await response.json();
-  // console.log(data);
+
   if (response.ok) {
     return data;
   }
@@ -17,12 +17,11 @@ export default function GetPost(props) {
   useEffect(async () => {
     updatePostData(await getAllPosts());
   }, []);
-  console.log('postData', postData._id);
+  // console.log('postData', postData._id);
 
   function mapPosts(amount) {
     // const postLength = postData.length;
     return postData.slice(-7).map((post) => {
-      console.log(post.user[0].image);
       return (
         <PostCard
           key={post.createdAt}

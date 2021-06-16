@@ -1,5 +1,5 @@
-import { Row, Col } from "react-bootstrap"
-import "../SkillsCard.css"
+import { Row, Col } from 'react-bootstrap';
+import '../SkillsCard.css';
 
 const SkillsCard = (props) => {
   return (
@@ -7,7 +7,7 @@ const SkillsCard = (props) => {
       <p className="skills-title">{props.title}</p>
       <Row className="my-2">
         <Col xs={1}>
-          <img className="img-fluid" src={props.img} />
+          <img className="img-fluid" src={props.img} alt="" />
         </Col>
 
         <Col xs={11}>
@@ -15,7 +15,7 @@ const SkillsCard = (props) => {
         </Col>
       </Row>
     </div>
-  )
-}
+  );
+};
 
-export default SkillsCard
+export default SkillsCard;

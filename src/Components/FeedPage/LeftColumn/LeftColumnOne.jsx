@@ -1,7 +1,7 @@
-import React from "react";
-import "../Post.css";
-import { Card, Col, Image, Divider, Container, Item } from "react-bootstrap";
-import "bootstrap-icons/font/bootstrap-icons.css";
+import React from 'react';
+import '../Post.css';
+import { Card, Image } from 'react-bootstrap';
+import 'bootstrap-icons/font/bootstrap-icons.css';
 
 const LeftColumnOne = (props) => {
   return (
@@ -15,7 +15,7 @@ const LeftColumnOne = (props) => {
       </Card.Header>
       <Card.Body className="mt-5  p-0">
         <Card.Title className="text-center">
-          <Card.Link>
+          <Card.Link to={`/user/60c9be8b6f63455fa0ee7849`}>
             {props.name} {props.surname}
           </Card.Link>
         </Card.Title>

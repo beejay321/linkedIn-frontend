@@ -2,15 +2,14 @@ import ExpEduCard from './ExpEduCard';
 import { Button } from 'react-bootstrap';
 
 const ExperienceContent = (props) => {
-  const experience = props.experiences;
-  console.log(experience);
+  const exp = props.experiences;
   const userId = props.userId;
   const userName = props.userName;
-  // const experiencess = experiences.experiences
-  console.log('this is the shitty experience', experience);
+  // const exp = experience.experiences;
+  // console.log('this is the shitty experience', exp);
   return (
     <>
-      {experience.map((exp) => (
+      {exp.map((exp) => (
         <ExpEduCard
           experience={exp}
           userId={props.userId}

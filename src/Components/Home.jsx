@@ -1,14 +1,14 @@
-import React from "react";
-import JumboProfile from "./JumboProfile";
-import { Container, Row, Col } from "react-bootstrap";
-import Sidebar from "./Sidebar/Sidebar";
-import CardProfile from "./CardProfile";
-import About from "./AboutProfile";
-import ExperienceContent from "./ExperienceContent";
-import EducationContent from "./EducationContent";
-import SkillsContent from "./SkillsContent";
-import AccomplishmentsContent from "./AccomplishmentsContent";
-import InterestsContent from "./InterestsContent";
+import React from 'react';
+import JumboProfile from './JumboProfile';
+import { Container, Row, Col } from 'react-bootstrap';
+import Sidebar from './Sidebar/Sidebar';
+import CardProfile from './CardProfile';
+import About from './AboutProfile';
+import ExperienceContent from './ExperienceContent';
+import EducationContent from './EducationContent';
+import SkillsContent from './SkillsContent';
+import AccomplishmentsContent from './AccomplishmentsContent';
+import InterestsContent from './InterestsContent';
 
 class Home extends React.Component {
   state = {
@@ -25,7 +25,7 @@ class Home extends React.Component {
       );
       if (response.ok) {
         const data = await response.json();
-        console.log(data);
+
         this.setState({ user: data });
       }
     } catch (error) {
@@ -34,13 +34,15 @@ class Home extends React.Component {
 
     const userId = this.state.user._id;
 
-    const userName = this.state.user.surname;
+    // const userName = this.state.user.surname;
 
     try {
-      const xpResponse = await fetch(`https://api-linkedin-api.herokuapp.com/profile/${userId}/experiences`);
+      const xpResponse = await fetch(
+        `https://api-linkedin-api.herokuapp.com/profile/${userId}/experiences`
+      );
       if (xpResponse.ok) {
         const xpData = await xpResponse.json();
-        console.log("experiences", xpData.experiences);
+
         this.setState({ userExperiences: xpData.experiences });
       }
     } catch (error) {
@@ -53,7 +55,9 @@ class Home extends React.Component {
       return;
     }
     try {
-      const response = await fetch(`https://api-linkedin-api.herokuapp.com/profile/${this.props.match.params.id}`);
+      const response = await fetch(
+        `https://api-linkedin-api.herokuapp.com/profile/${this.props.match.params.id}`
+      );
       if (response.ok) {
         const data = await response.json();
         this.setState({ user: data });
@@ -62,13 +66,18 @@ class Home extends React.Component {
       console.log(error);
     }
 
-    const userId = this.props.match.params.id === "me" ? this.state.user._id : this.props.match.params.id;
+    const userId =
+      this.props.match.params.id === 'me'
+        ? this.state.user._id
+        : this.props.match.params.id;
 
     try {
-      const xpResponse = await fetch(`https://api-linkedin-api.herokuapp.com/profile/${userId}/experiences`);
+      const xpResponse = await fetch(
+        `https://api-linkedin-api.herokuapp.com/profile/${userId}/experiences`
+      );
       if (xpResponse.ok) {
         const xpData = await xpResponse.json();
-        console.log("experiences", xpData.experiences);
+
         this.setState({ userExperiences: xpData.experiences });
       }
     } catch (error) {
@@ -92,17 +101,37 @@ class Home extends React.Component {
                   area={this.state.user.area}
                   image={this.state.user.avatar}
                 />
-                <CardProfile title="About" content={<About bio={this.state.user.bio} />} />
+                <CardProfile
+                  title="About"
+                  content={<About bio={this.state.user.bio} />}
+                />
                 <CardProfile
                   title="Experience"
                   user={this.state.user._id}
                   isMe={this.props.match.params.id}
-                  content={<ExperienceContent experiences={this.state.userExperiences} userId={this.state.user._id} userName={this.state.user.surname} />}
+                  content={
+                    <ExperienceContent
+                      experiences={this.state.userExperiences}
+                      userId={this.state.user._id}
+                      userName={this.state.user.surname}
+                    />
+                  }
                 />
                 <CardProfile title="Education" content={<EducationContent />} />
-                <CardProfile title={"Skills & Endorsements"} content={<SkillsContent />} />
-                <CardProfile user={this.state.user._id} title="Accomplishments" content={<AccomplishmentsContent />} />
-                <CardProfile user={this.state.user._id} title="Interests" content={<InterestsContent />} />
+                <CardProfile
+                  title={'Skills & Endorsements'}
+                  content={<SkillsContent />}
+                />
+                <CardProfile
+                  user={this.state.user._id}
+                  title="Accomplishments"
+                  content={<AccomplishmentsContent />}
+                />
+                <CardProfile
+                  user={this.state.user._id}
+                  title="Interests"
+                  content={<InterestsContent />}
+                />
               </Col>
               <Col xs={4}>
                 <Sidebar />

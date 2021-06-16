@@ -17,7 +17,7 @@ class ExpEduCard extends React.Component {
 
   handleEdit = async (e) => {
     e.preventDefault();
-    console.log('ciaociao');
+
     try {
       const response = await fetch(
         `https://api-linkedin-api.herokuapp.com/profile/${this.state.userId}/experiences/${this.state.expId}`,
@@ -31,13 +31,10 @@ class ExpEduCard extends React.Component {
       );
       if (response.ok) {
         const data = await response.json();
-        console.log(data);
       }
     } catch (error) {
       console.log(error);
     }
-
-    console.log(this.inputFile);
 
     try {
       const response = await fetch(
@@ -49,7 +46,6 @@ class ExpEduCard extends React.Component {
         }
       );
       if (response.ok) {
-        console.log('exp image uploaded');
       }
     } catch (error) {
       console.log(error);
@@ -58,7 +54,7 @@ class ExpEduCard extends React.Component {
 
   handleDelete = async (e) => {
     e.preventDefault();
-    console.log('ciaociao');
+
     try {
       const response = await fetch(
         `https://api-linkedin-api.herokuapp.com/profile/${this.state.userId}/experiences/${this.state.expId}`,
@@ -72,7 +68,6 @@ class ExpEduCard extends React.Component {
       );
       if (response.ok) {
         const data = await response.json();
-        console.log(data);
       }
     } catch (error) {
       console.log(error);
@@ -81,12 +76,11 @@ class ExpEduCard extends React.Component {
 
   handleChange = (e) => {
     e.preventDefault();
-    console.log('stuff changing');
+
     let id = e.target.id;
     this.setState({
       experience: { ...this.state.experience, [id]: e.target.value },
     });
-    console.log(this.state.experience);
   };
 
   selectImage = (e) => {

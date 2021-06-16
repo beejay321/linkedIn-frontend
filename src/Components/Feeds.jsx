@@ -20,7 +20,6 @@ class Feeds extends React.Component {
       if (response.ok) {
         const data = await response.json();
         this.setState({ user: data });
-        console.log(this.state.user.avatar);
       }
     } catch (error) {
       console.log(error);
@@ -28,7 +27,6 @@ class Feeds extends React.Component {
   };
 
   render() {
-    console.log(this.state);
     return (
       <>
         <Container className="feed-container">
