@@ -1,5 +1,5 @@
-import React from "react";
-import "./Post.css";
+import React from 'react';
+import './Post.css';
 import {
   Card,
   Col,
@@ -11,10 +11,10 @@ import {
   Accordion,
   DropdownButton,
   Dropdown,
-} from "react-bootstrap";
-import "bootstrap-icons/font/bootstrap-icons.css";
-import MediaModal from "../MediaModal";
-import { Link } from "react-router-dom";
+} from 'react-bootstrap';
+import 'bootstrap-icons/font/bootstrap-icons.css';
+
+import { Link } from 'react-router-dom';
 
 function PostCard(props) {
   return (
@@ -28,10 +28,10 @@ function PostCard(props) {
             <Col xs={8} className="align-text-bottom">
               <Link id="profilelinks" to={`/user/${props.profile._id}`}>
                 <span className="getPost-person-name font-weight-bold">
-                  {props.firstname} {props.lastname}{" "}
-                </span>{" "}
+                  {props.firstname} {props.lastname}{' '}
+                </span>{' '}
               </Link>
-              <span className="sidebar-span text-muted">{" \u2022 "}</span>
+              <span className="sidebar-span text-muted">{' \u2022 '}</span>
               <span className="sidebar-span text-muted">2nd</span>
               <br />
               <span className="text-muted">{props.title}</span>
@@ -69,7 +69,7 @@ function PostCard(props) {
           <p>{props.text}</p>
           <div>
             <Card.Img src={props.postimage} />
-          </div>{" "}
+          </div>{' '}
           <hr className="text-muted my-0 py-0" />
           <Accordion.Toggle as={Button} variant="link" eventKey="1">
             <Col className="getPost-comment-section ">

@@ -1,7 +1,7 @@
 // import React from "react";
-import React, { Component } from "react";
-import { Modal, Button, Form, Col, Row } from "react-bootstrap";
-import "../CardProfile.css";
+import React, { Component } from 'react';
+import { Modal, Button, Form, Col, Row } from 'react-bootstrap';
+import '../CardProfile.css';
 
 class AddPostModal extends Component {
   state = {
