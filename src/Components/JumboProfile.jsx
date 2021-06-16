@@ -1,14 +1,18 @@
-import { Card, Button } from "react-bootstrap"
-import "../JumboProfile.css"
-import ProfilePicModal from "./ProfilePicModal"
+import { Card, Button } from 'react-bootstrap';
+import '../JumboProfile.css';
+import ProfilePicModal from './ProfilePicModal';
 
 const JumboProfile = (props) => {
+  console.log(
+    'proooososopopspaspaospaospaopaopsoapsoapoapospaospaopospopaospaospospaospoas',
+    props
+  );
   return (
     <Card>
       <div className="img-container"></div>
       <Card.Body>
         <img className="avatar" src={props.image} />
-        {props.isMe === "me" && <ProfilePicModal userId={props.userId} />}
+        {props.isMe === 'me' && <ProfilePicModal userId={props.userId} />}
         <Card.Title className="mt-5">
           {props.name} {props.surname}
         </Card.Title>
@@ -19,7 +23,7 @@ const JumboProfile = (props) => {
             Creating synergy between clint expectations and product delivery
           </p>
           <p className="location-line">
-            {props.area} •{" "}
+            {props.area} •{' '}
             <span className="text-primary">
               <b>75 Connections • Contact info</b>
             </span>
@@ -27,7 +31,7 @@ const JumboProfile = (props) => {
         </Card.Text>
       </Card.Body>
     </Card>
-  )
-}
+  );
+};
 
-export default JumboProfile
+export default JumboProfile;
