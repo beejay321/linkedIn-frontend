@@ -8,7 +8,8 @@ const ExperienceContent = (props) => {
         return (
           <ExpEduCard
             experience={exp}
-            userId={props.user}
+            userId={props.userId}
+            userName={props.userName}
             jobOrSchool={exp.role}
             companyOrSubject={exp.company}
             duration={exp.startDate}
