@@ -13,7 +13,6 @@ import {
   Dropdown,
 } from 'react-bootstrap';
 import 'bootstrap-icons/font/bootstrap-icons.css';
-import MediaModal from '../MediaModal';
 import { Link } from 'react-router-dom';
 
 function PostCard(props) {
@@ -31,7 +30,6 @@ function PostCard(props) {
                   {props.firstname} {props.lastname}{' '}
                 </span>{' '}
               </Link>
-
               <span className="sidebar-span text-muted">{' \u2022 '}</span>
               <span className="sidebar-span text-muted">2nd</span>
               <br />

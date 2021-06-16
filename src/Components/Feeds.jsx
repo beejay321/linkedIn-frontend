@@ -1,11 +1,11 @@
-import { Container, Row, Col, Card, Button } from "react-bootstrap";
-import "../CardProfile.css";
-import AddPost from "./AddPost";
-import GetPost from "./FeedPage/GetPost";
-import React from "react";
-import LeftColumnHomeFeed from "./FeedPage/LeftColumn/LeftColumnHomeFeed";
-import RightColumnHomeFeed from "./FeedPage/RightColumn/RightColumnHomeFeed";
-import "./FeedPage/Post.css";
+import { Container, Row, Col } from 'react-bootstrap';
+import '../CardProfile.css';
+import AddPost from './AddPost';
+import GetPost from './FeedPage/GetPost';
+import React from 'react';
+import LeftColumnHomeFeed from './FeedPage/LeftColumn/LeftColumnHomeFeed';
+import RightColumnHomeFeed from './FeedPage/RightColumn/RightColumnHomeFeed';
+import './FeedPage/Post.css';
 class Feeds extends React.Component {
   state = {
     user: {},
@@ -14,11 +14,13 @@ class Feeds extends React.Component {
 
   componentDidMount = async () => {
     try {
-      const response = await fetch(`https://api-linkedin-api.herokuapp.com/profile/60c9be8b6f63455fa0ee7849`);
+      const response = await fetch(
+        `https://api-linkedin-api.herokuapp.com/profile/60c9be8b6f63455fa0ee7849`
+      );
       if (response.ok) {
         const data = await response.json();
         this.setState({ user: data });
-        console.log(this.state.user);
+        console.log(this.state.user.avatar);
       }
     } catch (error) {
       console.log(error);
@@ -37,12 +39,12 @@ class Feeds extends React.Component {
                 <LeftColumnHomeFeed user={this.state.user} />
               </Col>
               <Col xs={6}>
-                <AddPost image={this.state.user.image} />
-                <GetPost image={this.state.user.image} />
+                <AddPost image={this.state.user.avatar} />
+                <GetPost image={this.state.user.avatar} />
               </Col>
               <Col xs={3}>
-                {" "}
-                <RightColumnHomeFeed />{" "}
+                {' '}
+                <RightColumnHomeFeed />{' '}
               </Col>
             </Row>
           </Col>

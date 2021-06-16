@@ -1,5 +1,3 @@
-import react from 'react';
-import { Card, Container } from 'react-bootstrap';
 import './Post.css';
 import PostCard from './PostCard.jsx';
 import { useState, useEffect } from 'react';
@@ -19,14 +17,15 @@ export default function GetPost(props) {
   useEffect(async () => {
     updatePostData(await getAllPosts());
   }, []);
-  // console.log('postData', postData._id);
+  console.log('postData', postData._id);
 
   function mapPosts(amount) {
     // const postLength = postData.length;
     return postData.slice(-7).map((post) => {
-      console.log(post.user[0]);
+      console.log(post.user[0].image);
       return (
         <PostCard
+          key={post.createdAt}
           id={post._id}
           text={post.text}
           username={post.user[0].username}
