@@ -1,0 +1,11 @@
+html {
+  scroll-behavior: smooth;
+}
+
+.profile-container {
+  margin-top: 10px;
+}
+
+.feed-container {
+  margin-top: 60px;
+}

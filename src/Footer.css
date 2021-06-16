@@ -1,0 +1,23 @@
+body {
+  /* background-color: whitesmoke; */
+  background-color: #f3f2ef;
+}
+
+.footerlist {
+  list-style-type: none;
+  margin-top: 1rem;
+  font-size: 0.8rem;
+}
+.selectlanguage {
+  list-style-type: none;
+  margin-top: 1rem;
+  font-size: 0.8rem;
+}
+
+.footer-flex {
+  display: flex;
+  justify-content: space-evenly;
+}
+ul {
+  padding-left: 0rem !important;
+}

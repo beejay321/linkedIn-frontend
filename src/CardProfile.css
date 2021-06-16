@@ -1,0 +1,46 @@
+.section-title {
+  font-size: 18px;
+}
+
+.text-size {
+  font-size: 13px;
+}
+#postbutton {
+  border: solid 1px rgb(139, 139, 139);
+  border-radius: 20px;
+  width: 50rem;
+  margin-left: 20px;
+  /* background-color: none; */
+}
+#savepostbtn {
+  border: solid 1px rgb(139, 139, 139);
+  border-radius: 20px;
+  margin-top: 10px;
+  width: 5rem;
+  margin-left: 20px;
+  /* background-color: none; */
+}
+
+.addpostfooterbtn-section button:nth-child(1n) {
+  background: #fff;
+  color: rgb(90, 90, 90);
+  /* font-size: 10px; */
+  border: none;
+  text-align: center;
+}
+.addpostfooterbtn-section button:nth-child(1n):hover {
+  background: #e2e2e2;
+}
+
+.addposttext {
+  padding-top: 8px;
+  padding-left: 0px !important;
+}
+#selectimages {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+#post-file {
+  width: 0;
+}
