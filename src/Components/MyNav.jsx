@@ -8,11 +8,11 @@ import {
   Navbar,
   Nav,
   NavDropdown,
-} from "react-bootstrap"
-import React from "react"
-import { Link, withRouter } from "react-router-dom"
-import "../Nav.css"
-import "bootstrap-icons/font/bootstrap-icons.css"
+} from 'react-bootstrap';
+import React from 'react';
+import { Link, withRouter } from 'react-router-dom';
+import '../Nav.css';
+import 'bootstrap-icons/font/bootstrap-icons.css';
 
 class MyNav extends React.Component {
   render() {
@@ -68,13 +68,15 @@ class MyNav extends React.Component {
             </Nav>
 
             <Nav className="mr-auto down-scale">
-              <Nav.Link onClick={() => this.props.history.push("/")}>
+              <Nav.Link onClick={() => this.props.history.push('/')}>
                 <i className="bi bi-house-door-fill"></i>
                 <span>Home</span>
               </Nav.Link>
 
-              <Nav.Link>
-                {" "}
+              <Nav.Link
+                onClick={() => this.props.history.push('/workInProgress')}
+              >
+                {' '}
                 <i className="bi bi-people-fill"></i>
                 <span>Network</span>
               </Nav.Link>
@@ -82,7 +84,7 @@ class MyNav extends React.Component {
                 <i className="bi bi-briefcase-fill"></i> <span>Jobs</span>
               </Nav.Link>
               <Nav.Link>
-                {" "}
+                {' '}
                 <i className="bi bi-chat-dots-fill"></i>
                 <span>Messaging</span>
               </Nav.Link>
@@ -91,7 +93,7 @@ class MyNav extends React.Component {
                 <span>Notifications</span>
               </Nav.Link>
 
-              <Nav.Link onClick={() => this.props.history.push("/user/me")}>
+              <Nav.Link onClick={() => this.props.history.push('/user/me')}>
                 <i className="bi bi-person-circle"></i> <span> Me</span>
               </Nav.Link>
 
@@ -121,8 +123,8 @@ class MyNav extends React.Component {
           </Container>
         </Navbar>
       </>
-    )
+    );
   }
 }
 
-export default withRouter(MyNav)
+export default withRouter(MyNav);
