@@ -17,7 +17,7 @@ export default function GetPost(props) {
   useEffect(async () => {
     updatePostData(await getAllPosts());
   }, []);
-  // console.log('postData', postData._id);
+  console.log('postData', postData._id);
 
   function mapPosts(amount) {
     // const postLength = postData.length;
