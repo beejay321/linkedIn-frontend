@@ -28,7 +28,7 @@ const ExperienceContent = (props) => {
       ))}
 
       <a
-        href={`http://localhost:3001/profile/${userId}/pdfDownload`}
+        href={`https://api-linkedin-api.herokuapp.com/profile/${userId}/pdfDownload`}
         download="save"
         className="download-link"
       >
@@ -38,7 +38,7 @@ const ExperienceContent = (props) => {
         </Button>
       </a>
       <a
-        href={`http://localhost:3001/profile/${userId}/experiences/CSV`}
+        href={`https://api-linkedin-api.herokuapp.com/profile/${userId}/experiences/CSV`}
         download="save"
         className="download-link"
       >
