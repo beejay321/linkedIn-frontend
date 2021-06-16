@@ -20,7 +20,7 @@ class Home extends React.Component {
   componentDidMount = async () => {
     try {
       const response = await fetch(
-        `https://api-linkedin-api.herokuapp.com/profile/60c9be8b6f63455fa0ee7849
+        `https://api-linkedin-api.herokuapp.com/profile/${this.props.match.params.id}
         `
       );
       if (response.ok) {
@@ -48,7 +48,7 @@ class Home extends React.Component {
     }
   };
 
-  /* componentDidUpdate = async (prevProps) => {
+  componentDidUpdate = async (prevProps) => {
     if (prevProps.match.params.id === this.props.match.params.id) {
       return;
     }
@@ -68,12 +68,13 @@ class Home extends React.Component {
       const xpResponse = await fetch(`https://api-linkedin-api.herokuapp.com/profile/${userId}/experiences`);
       if (xpResponse.ok) {
         const xpData = await xpResponse.json();
-        // this.setState({ userExperiences: xpData });
+        console.log("experiences", xpData.experiences);
+        this.setState({ userExperiences: xpData.experiences });
       }
     } catch (error) {
       console.log(error);
     }
-  }; */
+  };
 
   render() {
     return (

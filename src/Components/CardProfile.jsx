@@ -12,7 +12,7 @@ class CardProfile extends React.Component {
     e.preventDefault();
     console.log("ciaociao");
     try {
-      const response = await fetch(`https://api-linkedin-api.herokuapp.com/profile/60c9be8b6f63455fa0ee7849}/experiences`, {
+      const response = await fetch(`https://api-linkedin-api.herokuapp.com/profile/60c9be8b6f63455fa0ee7849/experiences`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
