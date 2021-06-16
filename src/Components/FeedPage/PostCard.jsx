@@ -13,7 +13,6 @@ import {
   Dropdown,
 } from 'react-bootstrap';
 import 'bootstrap-icons/font/bootstrap-icons.css';
-
 import { Link } from 'react-router-dom';
 
 function PostCard(props) {

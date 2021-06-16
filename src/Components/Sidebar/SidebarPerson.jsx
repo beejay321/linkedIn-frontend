@@ -1,6 +1,7 @@
-import React from "react";
-import "./Sidebar.css";
-import { Image, Row, Col, Button } from "react-bootstrap";
+import React from 'react';
+import './Sidebar.css';
+import { Image, Row, Col, Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 const SidebarPerson = (props) => {
   return (
@@ -10,10 +11,13 @@ const SidebarPerson = (props) => {
           <Image className="sidebar-img" src={props.image} />
         </Col>
         <Col xs={9} className="align-text-bottom">
-          <span className="sidebar-person-name">
-            {props.name} {props.surname}
-          </span>
-          <span className="sidebar-span text-muted">{" \u2022 "}</span>
+          <Link id="profilelinks" to={`/user/${props.id}`}>
+            <span className="sidebar-person-name">
+              {props.name} {props.surname}
+            </span>
+          </Link>
+
+          <span className="sidebar-span text-muted">{' \u2022 '}</span>
           <span className="sidebar-span text-muted">2nd</span>
           <p className="sidebar-p text-muted">{props.title}</p>
         </Col>
