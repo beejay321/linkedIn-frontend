@@ -233,3 +233,100 @@ hr {
   font-size: 14px;
   padding-left: 10px;
 }
+.feeds-group-icons {
+  margin-right: 10px;
+  padding: 10px;
+  color: #6c757d;
+  transition: all 0.2s ease-in-out;
+}
+.feeds-group-icons-like {
+  margin-right: 10px;
+  padding: 10px;
+  color: #6c757d;
+  transition: all 0.2s ease-in-out;
+}
+
+.feeds-icons-bottom {
+  font-size: 24px;
+}
+.text-comment {
+  margin-left: 10px;
+}
+.feeds-like-reactions {
+  display: none;
+  position: absolute;
+  bottom: 80px;
+  left: 30px;
+  background-color: whitesmoke;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 10px;
+
+  border-radius: 10px;
+}
+.feeds-group-icons-like:hover + .feeds-like-reactions {
+  display: inline;
+  background-color: white;
+  border-radius: 15px;
+  transform: scale(1);
+}
+.feeds-group-icons-like:hover {
+  display: inline;
+  background-color: whitesmoke;
+  border-radius: 10px;
+  transform: scale(1);
+}
+
+.feeds-group-icons:hover {
+  background-color: whitesmoke;
+  border-radius: 10px;
+  transform: scale(1);
+  display: inline;
+}
+.feeds-main-dots {
+  position: absolute;
+  top: 30px;
+  right: 70px;
+  font-size: 30px;
+
+  transition: all 0.2s ease-in-out;
+}
+.feeds-main-dots:hover {
+  background-color: whitesmoke;
+  border-radius: 10px;
+  transform: scale(1);
+}
+.feeds-heart-style {
+  font-size: 25px;
+}
+.feeds-heart-hand-style {
+  font-size: 25px;
+  color: blue;
+  stroke-width: 12px;
+  margin-left: 20px;
+}
+.feeds-bulb-style {
+  font-size: 30px;
+  color: rgb(201, 201, 15);
+  stroke-width: 12px;
+  margin-left: 20px;
+}
+.feeds-hands-style {
+  font-size: 30px;
+  color: green;
+  stroke-width: 12px;
+  margin-left: 20px;
+  margin-right: 10px;
+}
+.feeds-post-image {
+  width: 450px;
+  height: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 40px;
+  border-radius: 10%;
+}
+.home-main-container {
+  margin-top: 65px;
+}

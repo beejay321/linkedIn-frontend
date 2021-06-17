@@ -15,6 +15,23 @@ import {
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import { Link } from 'react-router-dom';
 
+import { AiOutlineLike } from 'react-icons/ai';
+
+const addLike = async (postId) => {
+  try {
+    const response = await fetch(
+      `http://localhost:3001/posts/${postId}/addlike`,
+      { method: 'POST' }
+    );
+    if (response.ok) {
+      const data = await response.json();
+      console.log(data);
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 function PostCard(props) {
   return (
     <Accordion defaultActiveKey="0">
@@ -70,16 +87,20 @@ function PostCard(props) {
             <Card.Img src={props.postimage} />
           </div>{' '}
           <hr className="text-muted my-0 py-0" />
+          <span>
+            <span className="feeds-group-icons-like">see likes</span>
+            <div className="feeds-like-reactions">how it looks?</div>
+          </span>
+          <button onClick={() => addLike(props.id)}>
+            {' '}
+            <AiOutlineLike className="feeds-icons-bottom" />
+            like
+          </button>
+          {/* <span className="feeds-group-icons-like ">
+            <i class="bi bi-hand-thumbs-up"></i> Like
+          </span> */}
           <Accordion.Toggle as={Button} variant="link" eventKey="1">
             <Col className="getPost-comment-section ">
-              <Button className="getPost-like-btn mx-1">
-                <Row>
-                  <span>
-                    <i class="bi bi-hand-thumbs-up"></i> Like
-                  </span>
-                </Row>
-              </Button>
-
               <Button className="getPost-comment-btn mx-1">
                 <Row>
                   <span>
