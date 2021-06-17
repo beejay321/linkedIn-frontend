@@ -11,7 +11,7 @@ class ExpEduCard extends React.Component {
     experience: { ...this.props.experience },
     formRequest: '',
     expImage: null,
-    image: this.props.experience.image,
+    image: this.props.img,
   };
 
   inputFile = React.createRef();
@@ -114,14 +114,7 @@ class ExpEduCard extends React.Component {
             {this.props.location}
             <br />
           </span>
-          <span>
-            <img
-              src={this.state.experience.image}
-              style={{ height: 40 }}
-              alt=""
-            ></img>
-          </span>
-          <br />
+          
           {this.props.description}
         </Col>
         <Col xs={2} className="d-flex justify-content-center edit-icon">

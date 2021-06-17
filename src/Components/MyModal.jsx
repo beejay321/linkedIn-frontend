@@ -76,7 +76,7 @@ export default function ModalShow(props) {
                 onChange={props.handleChange}
               />
             </Form.Group>
-            {props.formType === 'edit' && (
+            {/* {props.formType === 'edit' && ( */}
               <Form.Group className="mt-3">
                 <Form.Control
                   id="picture"
@@ -84,7 +84,7 @@ export default function ModalShow(props) {
                   onChange={props.selectImage}
                 />
               </Form.Group>
-            )}
+            {/* )} */}
           </Modal.Body>
           <Modal.Footer>
             <Button

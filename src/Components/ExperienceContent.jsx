@@ -20,8 +20,8 @@ const ExperienceContent = (props) => {
           description={exp.description}
           id={exp._id}
           img={
-            exp.image ||
-            'https://res.cloudinary.com/dmqsfltrf/image/upload/v1607933865/linkedin/d5ncpqvqrjwdxixjuyjr.ico'
+            exp.image 
+            // ||  'https://res.cloudinary.com/dmqsfltrf/image/upload/v1607933865/linkedin/d5ncpqvqrjwdxixjuyjr.ico'
           }
         />
       ))}
