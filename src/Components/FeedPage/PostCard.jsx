@@ -18,25 +18,22 @@ import { AiOutlineLike } from 'react-icons/ai';
 
 class PostCard extends React.Component {
   state = {
-    likes: [],
+    clicked: [],
   };
 
-  grabLikes = async (postId) => {
+  componentDidMount = async () => {
     try {
       const response = await fetch(
-        `http://localhost:3001/posts/${postId}/likes`
+        `http://localhost:3001/posts/${this.props.id}/likes`
       );
       if (response.ok) {
         const data = await response.json();
-        this.setState({ likes: data[0] });
+        console.log('HERE ARE ALL THE LIKES', data.likes);
+        this.setState({ clicked: data.likes });
       }
     } catch (error) {
       console.log(error);
     }
-  };
-
-  componentDidMount = async (postId) => {
-    this.grabLikes(postId);
   };
 
   addLike = async (postId) => {
@@ -55,6 +52,7 @@ class PostCard extends React.Component {
   };
 
   render() {
+    console.log('IS IT AN ARRAY?:', this.state.clicked);
     return (
       <Accordion defaultActiveKey="0">
         <Card className="mt-2 mb-2 getPost-card">
@@ -111,19 +109,30 @@ class PostCard extends React.Component {
             <hr className="text-muted my-0 py-0" />
             <span>
               <span className="feeds-group-icons-like">see likes</span>
+
               <div className="feeds-like-reactions">
-                {' '}
-                HERE ARE PEOPPLE{this.state.likes.likes[0].name}
+                {/* {this.state.clicked.name} */}
+                {this.state.clicked.map((item) => {
+                  return (
+                    <>
+                      <span className="people-liked">
+                        {`${item.name} ${item.surname},  `}
+                      </span>
+                    </>
+                  );
+                })}
               </div>
             </span>
-            <button onClick={() => this.addLike(this.props.id)}>
+            <button
+              className="like-button"
+              onClick={() => this.addLike(this.props.id)}
+            >
               {' '}
-              <AiOutlineLike className="feeds-icons-bottom" />
-              like
+              <AiOutlineLike className="feeds-icons-bottom" />{' '}
             </button>
-            {/* <span className="feeds-group-icons-like ">
-            <i class="bi bi-hand-thumbs-up"></i> Like
-          </span> */}
+            <row>
+              <span className="like-icon-click">like</span>
+            </row>
             <Accordion.Toggle as={Button} variant="link" eventKey="1">
               <Col className="getPost-comment-section ">
                 <Button className="getPost-comment-btn mx-1">
@@ -176,7 +185,6 @@ class PostCard extends React.Component {
                         </Row>
                       </Button>
                     </div>
-                    {/* <MediaModal id={props.id} /> */}
 
                     <Button
                       className="getPost-commentSend-btn mx-1"

@@ -11,6 +11,7 @@ class ExpEduCard extends React.Component {
     experience: { ...this.props.experience },
     formRequest: '',
     expImage: null,
+    image: this.props.experience.image,
   };
 
   inputFile = React.createRef();
@@ -39,7 +40,7 @@ class ExpEduCard extends React.Component {
 
     try {
       const response = await fetch(
-        `https://api-linkedin-api.herokuapp.com/profile/${this.state.userName}/experiences/${this.state.expId}/picture`,
+        `https://api-linkedin-api.herokuapp.com/profile/${this.state.userId}/experiences/${this.state.expId}/picture`,
         {
           method: 'POST',
 
@@ -113,6 +114,14 @@ class ExpEduCard extends React.Component {
             {this.props.location}
             <br />
           </span>
+          <span>
+            <img
+              src={this.state.experience.image}
+              style={{ height: 40 }}
+              alt=""
+            ></img>
+          </span>
+          <br />
           {this.props.description}
         </Col>
         <Col xs={2} className="d-flex justify-content-center edit-icon">
