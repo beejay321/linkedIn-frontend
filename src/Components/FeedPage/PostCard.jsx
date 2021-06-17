@@ -113,7 +113,7 @@ class PostCard extends React.Component {
               <span className="feeds-group-icons-like">see likes</span>
               <div className="feeds-like-reactions">
                 {' '}
-                HERE ARE PEOPPLE{this.state.likes.likes[0].name}
+                {/* HERE ARE PEOPPLE{this.state.likes.likes[0].name} */}
               </div>
             </span>
             <button onClick={() => this.addLike(this.props.id)}>
