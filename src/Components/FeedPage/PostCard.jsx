@@ -13,14 +13,20 @@ class PostCard extends React.Component {
     new: {
       comment: "",
     },
+
+    clicked: [],
   };
 
-  grabLikes = async (postId) => {
+  componentDidMount = async () => {
     try {
-      const response = await fetch(`https://api-linkedin-api.herokuapp.com/posts/${postId}/likes`);
+     
+      const response = await fetch(
+        `https://api-linkedin-api.herokuapp.com/posts/${this.props.id}/likes`
+      );
       if (response.ok) {
         const data = await response.json();
-        this.setState({ likes: data[0] });
+        console.log('HERE ARE ALL THE LIKES', data.likes);
+        this.setState({ clicked: data.likes });
       }
     } catch (error) {
       console.log(error);
@@ -138,6 +144,7 @@ class PostCard extends React.Component {
   };
 
   render() {
+    console.log('IS IT AN ARRAY?:', this.state.clicked);
     return (
       <Accordion defaultActiveKey="0">
         <Card className="mt-2 mb-2 getPost-card">
@@ -195,22 +202,37 @@ class PostCard extends React.Component {
             <hr className="text-muted my-0 py-0" />
             <span>
               <span className="feeds-group-icons-like">see likes</span>
-              <div className="feeds-like-reactions"> {/* HERE ARE PEOPPLE{this.state.likes.likes[0].name} */}</div>
+              
+
+
+
+              <div className="feeds-like-reactions">
+                {/* {this.state.clicked.name} */}
+                {this.state.clicked.map((item) => {
+                  return (
+                    <>
+                      <span className="people-liked">
+                        {`${item.name} ${item.surname},  `}
+                      </span>
+                    </>
+                  );
+                })}
+              </div>
             </span>
-            {/* <button onClick={() => this.addLike(this.props.id)}>
-              {" "}
-              <AiOutlineLike className="feeds-icons-bottom" />
-              like
-            </button> */}
-            <Col className="getPost-comment-section ">
-              <Button className="getPost-like-btn mx-1" onClick={() => this.addLike(this.props.id)}>
-                <Row>
-                  <span>
-                    <i class="bi bi-hand-thumbs-up"></i> Like
-                  </span>
-                </Row>
-              </Button>
-              <Accordion.Toggle as={Button} variant="link" eventKey="1">
+            <button
+              className="like-button"
+              onClick={() => this.addLike(this.props.id)}
+            >
+              {' '}
+              <AiOutlineLike className="feeds-icons-bottom" />{' '}
+            </button>
+            <row>
+              <span className="like-icon-click">like</span>
+            </row>
+            <Accordion.Toggle as={Button} variant="link" eventKey="1">
+              <Col className="getPost-comment-section ">
+
+
                 <Button className="getPost-comment-btn mx-1">
                   <Row>
                     <span>
@@ -310,6 +332,19 @@ class PostCard extends React.Component {
                   </Row>
                 ))}
               </div>
+
+                    </div>
+
+                    <Button
+                      className="getPost-commentSend-btn mx-1"
+                      type="submit"
+                      disabled
+                    >
+                      <i className="bi bi-reply"></i>
+                    </Button>
+                  </InputGroup>
+                </Col>
+              </Row>
             </Accordion.Collapse>
           </Card.Body>
         </Card>
