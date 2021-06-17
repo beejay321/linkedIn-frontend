@@ -1,11 +1,8 @@
-import { Accordion, Card, Button, ListGroup } from 'react-bootstrap';
+import { Accordion, Card } from 'react-bootstrap';
 import RightColumnOnePerson from './RightColumnOnePerson';
 import { useState, useEffect } from 'react';
 
-const auth =
-  'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDk5MTNmYjYxOWU1ZDAwMTUxZjhmODUiLCJpYXQiOjE2MjA2NDQ4NTksImV4cCI6MTYyMTg1NDQ1OX0.fm075zxqUowsPdcnZmh_76d_SkR-rUgg6MQK86gOvm0';
-
-async function getAllProfiles(auth) {
+async function getAllProfiles() {
   const url = 'https://api-linkedin-api.herokuapp.com/profile/';
   const response = await fetch(url);
   const data = await response.json();
@@ -17,9 +14,9 @@ async function getAllProfiles(auth) {
 export default function RightColumnOne() {
   const [profilesData, updateProfilesData] = useState([]);
   useEffect(async () => {
-    updateProfilesData(await getAllProfiles(auth));
+    updateProfilesData(await getAllProfiles());
   }, []);
-  function mapProfiles(limit) {
+  function mapProfiles() {
     return profilesData.slice(-4).map((profile) => {
       return (
         <RightColumnOnePerson

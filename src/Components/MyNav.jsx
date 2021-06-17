@@ -104,20 +104,6 @@ class MyNav extends React.Component {
                   Reactivate <br /> Premium
                 </span>
               </Nav.Link>
-
-              {/* <Nav.Link href="#pricing" className="ml-3">
-                <i className="bi bi-grid-3x3-gap-fill"></i>{" "}
-                <span>
-                  <NavDropdown
-                    title="Work"
-                    id="basic-nav-dropdown"
-                  ></NavDropdown>
-                </span>
-              </Nav.Link> */}
-
-              {/* <NavDropdown title="Work" id="basic-nav-dropdown">
-                    
-                  </NavDropdown> */}
             </Nav>
           </Container>
         </Navbar>

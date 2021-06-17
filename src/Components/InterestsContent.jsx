@@ -1,7 +1,7 @@
 import { Row } from 'react-bootstrap';
 import InterestsCard from './InterestsCard';
 
-const InterestsContent = (props) => {
+const InterestsContent = () => {
   return (
     <Row>
       <InterestsCard

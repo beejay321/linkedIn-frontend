@@ -84,6 +84,7 @@ class AddPost extends React.Component {
               height="50"
               width="50"
               roundedCircle
+              alt=""
             />
 
             {/* <Button variant="secondary" size="md" block>

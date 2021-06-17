@@ -1,6 +1,6 @@
-import { Container, Row, Col } from "react-bootstrap"
-import { Link } from "react-router-dom"
-import "../ExpEduCard.css"
+import { Container, Row, Col } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import '../ExpEduCard.css';
 
 const SearchContent = (props) => {
   return (
@@ -8,10 +8,10 @@ const SearchContent = (props) => {
       {props.profiles.map((pr) => {
         return (
           <Container>
-            <Link to={`/user/${pr._id}`} style={{ textDecoration: "none" }}>
+            <Link to={`/user/${pr._id}`} style={{ textDecoration: 'none' }}>
               <Row className="py-1">
                 <Col xs={2}>
-                  <img src={pr.image} className="round" />
+                  <img src={pr.image} className="round" alt="" />
                 </Col>
                 <Col xs={10} className="text-deco">
                   <span className="title">
@@ -26,10 +26,10 @@ const SearchContent = (props) => {
               <hr />
             </Link>
           </Container>
-        )
+        );
       })}
     </>
-  )
-}
+  );
+};
 
-export default SearchContent
+export default SearchContent;

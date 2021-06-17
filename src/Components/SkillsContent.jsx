@@ -1,6 +1,6 @@
 import SkillsCard from './SkillsCard';
 
-const SkillsContent = (props) => {
+const SkillsContent = () => {
   return (
     <>
       <SkillsCard
