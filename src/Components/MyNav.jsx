@@ -78,15 +78,22 @@ class MyNav extends React.Component {
                 <i className="bi bi-people-fill"></i>
                 <span>Network</span>
               </Nav.Link>
-              <Nav.Link>
+
+              <Nav.Link
+                onClick={() => this.props.history.push('/workInProgress')}
+              >
                 <i className="bi bi-briefcase-fill"></i> <span>Jobs</span>
               </Nav.Link>
-              <Nav.Link>
+              <Nav.Link
+                onClick={() => this.props.history.push('/workInProgress')}
+              >
                 {' '}
                 <i className="bi bi-chat-dots-fill"></i>
                 <span>Messaging</span>
               </Nav.Link>
-              <Nav.Link>
+              <Nav.Link
+                onClick={() => this.props.history.push('/workInProgress')}
+              >
                 <i className="bi bi-bell-fill"></i>
                 <span>Notifications</span>
               </Nav.Link>
