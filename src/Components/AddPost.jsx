@@ -9,6 +9,7 @@ class AddPost extends React.Component {
     new: {
       text: '',
       user: '60c9be8b6f63455fa0ee7849',
+     
     },
     cover: undefined,
   };
@@ -28,7 +29,7 @@ class AddPost extends React.Component {
       );
 
       if (response.ok) {
-        alert('Sucesfully posted, you can now close the window :)');
+        alert('Sucessfully posted, you can now close the window :)');
         if (this.state.cover !== undefined) {
           const data = await response.json();
           const id = data._id;
