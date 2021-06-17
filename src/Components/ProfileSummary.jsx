@@ -1,7 +1,5 @@
 import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
-import CardProfile from './CardProfile';
-import SearchContent from './SearchContent';
 
 class Summary extends React.Component {
   state = {
