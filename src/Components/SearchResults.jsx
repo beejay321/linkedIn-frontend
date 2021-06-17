@@ -13,13 +13,8 @@ class SearchResults extends React.Component {
     this.setState({ query: this.props.match.params.query });
     try {
       const response = await fetch(
-        `https://striveschool-api.herokuapp.com/api/profile`,
-        {
-          headers: {
-            Authorization:
-              'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDk4ZWNhYTYxOWU1ZDAwMTUxZjhmN2QiLCJpYXQiOjE2MjA2MzQ3OTQsImV4cCI6MTYyMTg0NDM5NH0.uEmyf94agpe9Ah6YT4Rinls_egdc0qJQR3PnsoJvS1s',
-          },
-        }
+        `https://api-linkedin-api.herokuapp.com/profile`,
+        
       );
       if (response.ok) {
         const data = await response.json();
