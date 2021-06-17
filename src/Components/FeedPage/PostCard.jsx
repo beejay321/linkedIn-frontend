@@ -31,7 +31,7 @@ class PostCard extends React.Component {
   };
 
   componentDidMount = async (postId) => {
-    this.grabLikes(postId);
+    // this.grabLikes(postId);
     this.getComments();
   };
 
@@ -191,31 +191,28 @@ class PostCard extends React.Component {
               </Col>
             </Row>
           </Card.Header>
-          
+
           <Card.Body className="py-0">
-
             <p>{this.props.text}</p>
-
             <div>
               <Card.Img className="postImg" src={this.props.postimage} />
             </div>{" "}
-
             <hr className="text-muted my-0 py-0" />
-
-            <span>
-              <span className="feeds-group-icons-like">see likes</span>
-              <div className="feeds-like-reactions">
-                {/* {this.state.clicked.name} */}
-                {this.state.clicked.map((item) => {
-                  return (
-                    <>
-                      <span className="people-liked">{`${item.name} ${item.surname},  `}</span>
-                    </>
-                  );
-                })}
-              </div>
-            </span>
             <Col className="getPost-comment-section ">
+              <span>
+                <span className="feeds-group-icons-like">see likes</span>
+                <div className="feeds-like-reactions">
+                  {/* {this.state.clicked.name} */}
+                  {this.state.clicked.map((item) => {
+                    return (
+                      <>
+                        <span className="people-liked">{`${item.name} ${item.surname},  `}</span>
+                      </>
+                    );
+                  })}
+                </div>
+              </span>
+
               <Button className="getPost-like-btn mx-1" onClick={() => this.addLike(this.props.id)}>
                 <Row>
                   <span>
@@ -252,81 +249,80 @@ class PostCard extends React.Component {
               </Button>
 
               <Accordion.Collapse eventKey="1">
-                <Row className="mt-3">
-                  <Col xs={2}>
-                    <Link id="profilelinks" to={`/user/${this.props.profile._id}`}>
-                      <Image className="getPost-comment-img" src={this.props.profilepic} />
-                    </Link>
-                  </Col>
-
-                  <Col xs={10} className="align-text-bottom">
-                    <InputGroup className="mb-3">
-                      <FormControl
-                        className="getPost-commentInput"
-                        // value={this.state.new.comment}
-                        id="comment"
-                        onChange={this.handleChange}
-                        as="textarea"
-                        aria-label="Text input with checkbox"
-                        placeholder="Add a comment..."
-                      />
-
-                      <div className="addpostfooterbtn-section d-flex justify-content-between ">
-                        <Button className="addpostfooterbtn mx-1">
-                          <Row>
-                            <Col>
-                              <i className="bi bi-card-image"></i>
-                            </Col>
-                          </Row>
-                        </Button>
-                      </div>
-
-                      <Button className="getPost-commentSend-btn mx-1" type="submit" disabled>
-                        <i className="bi bi-reply"></i>
-                      </Button>
-                    </InputGroup>
-                  </Col>
-                  
-                </Row>
-
-                {this.state.comments.map((item) => (
-                  <Row className="commentDiv">
-                    <Col className="float-left " xs={2}>
-                      <Image className="getPost-img" src={item.user.avatar} />
+                <div>
+                  <Row className="mt-3">
+                    <Col xs={2}>
+                      <Link id="profilelinks" to={`/user/${this.props.profile._id}`}>
+                        <Image className="getPost-comment-img" src={this.props.profilepic} />
+                      </Link>
                     </Col>
 
-                    <Col>
-                      <Card style={{ width: "18rem" }}>
-                        <div className="commentCol">
-                          <Link id="profilelinks" to={`/user/${item.user._id}`}>
-                            <span className="getPost-person-name font-weight-bold">
-                              {item.user.name} {item.user.surname}
-                            </span>
-                          </Link>
-                          <span className="sidebar-span text-muted">{" \u2022 "}</span>
-                          <span className="sidebar-span text-muted">2nd</span>
-                          <br />
-                          <span className="text-muted">{item.user.title}</span>
+                    <Col xs={10} className="align-text-bottom">
+                      <InputGroup className="mb-3">
+                        <FormControl
+                          className="getPost-commentInput"
+                          // value={this.state.new.comment}
+                          id="comment"
+                          onChange={this.handleChange}
+                          as="textarea"
+                          aria-label="Text input with checkbox"
+                          placeholder="Add a comment..."
+                        />
 
-                          <br />
-                          <span>{item.comment}</span>
-                          <br />
-                          <div className="editDel d-flex justify-content-between ">
-                            <Button className="getPost-comment-btn mx-1" variant="outline">
-                              <span>Edit</span>
-                            </Button>
-                            <Button className="getPost-comment-btn mx-1" variant="outline">
-                              <span>Del</span>
-                            </Button>{" "}
-                          </div>
+                        <div className="addpostfooterbtn-section d-flex justify-content-between ">
+                          <Button className="addpostfooterbtn mx-1">
+                            <Row>
+                              <Col>
+                                <i className="bi bi-card-image"></i>
+                              </Col>
+                            </Row>
+                          </Button>
                         </div>
-                      </Card>
+
+                        <Button className="getPost-commentSend-btn mx-1" type="submit" disabled>
+                          <i className="bi bi-reply"></i>
+                        </Button>
+                      </InputGroup>
                     </Col>
                   </Row>
-                ))}
-                <Button className="getPost-commentSend-btn mx-1" type="submit" disabled>
-                  <i className="bi bi-reply"></i>
-                </Button>
+                  {this.state.comments.map((item) => (
+                    <Row className="commentDiv">
+                      <Col className="float-left " xs={2}>
+                        <Image className="getPost-img" src={item.user.avatar} />
+                      </Col>
+
+                      <Col>
+                        <Card style={{ width: "18rem" }}>
+                          <div className="commentCol">
+                            <Link id="profilelinks" to={`/user/${item.user._id}`}>
+                              <span className="getPost-person-name font-weight-bold">
+                                {item.user.name} {item.user.surname}
+                              </span>
+                            </Link>
+                            <span className="sidebar-span text-muted">{" \u2022 "}</span>
+                            <span className="sidebar-span text-muted">2nd</span>
+                            <br />
+                            <span className="text-muted">{item.user.title}</span>
+
+                            <br />
+                            <span>{item.comment}</span>
+                            <br />
+                            <div className="editDel d-flex justify-content-between ">
+                              <Button className="getPost-comment-btn mx-1" variant="outline">
+                                <span>Edit</span>
+                              </Button>
+                              <Button className="getPost-comment-btn mx-1" variant="outline">
+                                <span>Del</span>
+                              </Button>{" "}
+                            </div>
+                          </div>
+                        </Card>
+                      </Col>
+                    </Row>
+                  ))}
+
+                 
+                </div>
               </Accordion.Collapse>
             </Col>
           </Card.Body>
