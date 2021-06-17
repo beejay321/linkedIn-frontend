@@ -1,7 +1,6 @@
 import "./Post.css";
 import React from "react";
 import PostCard from "./PostCard.jsx";
-import { useState, useEffect } from "react";
 
 class GetPosts extends React.Component {
   state = {
