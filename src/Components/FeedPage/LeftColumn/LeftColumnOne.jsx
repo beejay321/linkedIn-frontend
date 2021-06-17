@@ -48,7 +48,7 @@ const LeftColumnOne = (props) => {
           <Card.Link>
             <p>Only available for a limited time</p>
             <p>
-              <i class="bi bi-linkedin" viewBox="0 0 16 16"></i>
+              <i className="bi bi-linkedin" viewBox="0 0 16 16"></i>
               Reactivate Premium : 50% Off
             </p>
           </Card.Link>
@@ -58,7 +58,7 @@ const LeftColumnOne = (props) => {
         <Card.Text className="m-0 p-0  px-3">
           <Card.Link>
             <p>
-              <i class="bi bi-bookmark-fill"></i>My Items
+              <i className="bi bi-bookmark-fill"></i>My Items
             </p>
           </Card.Link>
         </Card.Text>

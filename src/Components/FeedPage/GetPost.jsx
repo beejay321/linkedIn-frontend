@@ -19,7 +19,7 @@ export default function GetPost(props) {
   }, []);
   // console.log('postData', postData._id);
 
-  function mapPosts(amount) {
+  function mapPosts() {
     // const postLength = postData.length;
     return postData.slice(-7).map((post) => {
       return (

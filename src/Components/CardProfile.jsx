@@ -24,6 +24,7 @@ class CardProfile extends React.Component {
       );
       if (response.ok) {
         const data = await response.json();
+        console.log(data);
       }
     } catch (error) {
       console.log(error);
@@ -38,7 +39,6 @@ class CardProfile extends React.Component {
   };
 
   render() {
-    console.log(this.props.user);
     return (
       <Card className="my-3">
         <Card.Body>
