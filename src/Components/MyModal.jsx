@@ -1,25 +1,17 @@
-import React from "react"
-import {
-  Modal,
-  Button,
-  Form,
-  FormControl,
-  Col,
-  Row,
-  InputGroup,
-} from "react-bootstrap"
-import { useState } from "react"
+import React from 'react';
+import { Modal, Button, Form } from 'react-bootstrap';
+import { useState } from 'react';
 
 export default function ModalShow(props) {
-  const [show, setShow] = useState(false)
+  const [show, setShow] = useState(false);
 
-  const handleClose = () => setShow(false)
-  const handleShow = () => setShow(true)
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   return (
     <>
       <div onClick={handleShow}>
-        {props.formType === "edit" ? (
+        {props.formType === 'edit' ? (
           <i class="bi bi-pencil fs-5"></i>
         ) : (
           <i class="bi bi-plus fs-3"></i>
@@ -29,7 +21,7 @@ export default function ModalShow(props) {
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>
-            {props.formType === "edit" ? "Edit Experience" : "Add Experience"}
+            {props.formType === 'edit' ? 'Edit Experience' : 'Add Experience'}
           </Modal.Title>
         </Modal.Header>
         <Form onSubmit={props.handleSubmit}>
@@ -84,7 +76,7 @@ export default function ModalShow(props) {
                 onChange={props.handleChange}
               />
             </Form.Group>
-            {props.formType === "edit" && (
+            {props.formType === 'edit' && (
               <Form.Group className="mt-3">
                 <Form.Control
                   id="picture"
@@ -102,7 +94,7 @@ export default function ModalShow(props) {
               variant="outline-primary"
               onClick={handleClose}
             />
-            {props.formType === "edit" && (
+            {props.formType === 'edit' && (
               <Button
                 as="input"
                 type="button"
@@ -115,5 +107,5 @@ export default function ModalShow(props) {
         </Form>
       </Modal>
     </>
-  )
+  );
 }

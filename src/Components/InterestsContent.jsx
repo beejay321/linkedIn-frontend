@@ -1,7 +1,7 @@
-import { Row, Col } from "react-bootstrap"
-import InterestsCard from "./InterestsCard"
+import { Row } from 'react-bootstrap';
+import InterestsCard from './InterestsCard';
 
-const InterestsContent = (props) => {
+const InterestsContent = () => {
   return (
     <Row>
       <InterestsCard
@@ -30,7 +30,7 @@ const InterestsContent = (props) => {
         followers={152.032}
       />
     </Row>
-  )
-}
+  );
+};
 
-export default InterestsContent
+export default InterestsContent;

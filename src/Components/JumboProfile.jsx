@@ -1,17 +1,13 @@
-import { Card, Button } from 'react-bootstrap';
+import { Card } from 'react-bootstrap';
 import '../JumboProfile.css';
 import ProfilePicModal from './ProfilePicModal';
 
 const JumboProfile = (props) => {
-  console.log(
-    'proooososopopspaspaospaospaopaopsoapsoapoapospaospaopospopaospaospospaospoas',
-    props
-  );
   return (
     <Card>
       <div className="img-container"></div>
       <Card.Body>
-        <img className="avatar" src={props.image} />
+        <img className="avatar" src={props.image} alt="" />
         {props.isMe === 'me' && <ProfilePicModal userId={props.userId} />}
         <Card.Title className="mt-5">
           {props.name} {props.surname}

@@ -1,6 +1,6 @@
-import SkillsCard from "./SkillsCard"
+import SkillsCard from './SkillsCard';
 
-const SkillsContent = (props) => {
+const SkillsContent = () => {
   return (
     <>
       <SkillsCard
@@ -19,7 +19,7 @@ const SkillsContent = (props) => {
         workplace="Yuppiechef Contract"
       />
     </>
-  )
-}
+  );
+};
 
-export default SkillsContent
+export default SkillsContent;

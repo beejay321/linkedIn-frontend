@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import { Modal, Button, Col, Row } from "react-bootstrap";
+import React, { Component } from 'react';
+import { Modal, Button, Col, Row } from 'react-bootstrap';
 
 class MediaModal extends Component {
   state = {
@@ -15,7 +15,6 @@ class MediaModal extends Component {
   };
 
   fileSelectedHandler = (event) => {
-    console.log(event.target.files[0]);
     this.setState({
       post: event.target.files[0],
     });
@@ -24,15 +23,13 @@ class MediaModal extends Component {
   uploadImage = async (e) => {
     e.preventDefault();
     let formData = new FormData();
-    formData.append("post", this.state.post);
-    console.log(this.state.post);
-    console.log(formData);
+    formData.append('post', this.state.post);
 
     try {
       let response = await fetch(
         `https://striveschool-api.herokuapp.com/api/posts/${this.props.id}`,
         {
-          method: "POST",
+          method: 'POST',
           body: formData,
           headers: {
             // Content-Disposition: form-data; name="file"; filename="Chappellet_Vineyard_Sunset_in_Fall_42eaa7cf-a1f1-4f6b-a260-b6890a6762db-jpg.jpeg"
@@ -42,19 +39,19 @@ class MediaModal extends Component {
             // "Content-Disposition": form-data; name="description",
 
             Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDliYzRmMDkwNTY0YTAwMTU4OGU3M2YiLCJpYXQiOjE2MjA4MjEyMzMsImV4cCI6MTYyMjAzMDgzM30.SbwSggBFs6g6jZgb3C710s3gG93tcV5Fupko2NkKc-w",
+              'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDliYzRmMDkwNTY0YTAwMTU4OGU3M2YiLCJpYXQiOjE2MjA4MjEyMzMsImV4cCI6MTYyMjAzMDgzM30.SbwSggBFs6g6jZgb3C710s3gG93tcV5Fupko2NkKc-w',
           },
         }
       );
 
       if (response.ok) {
-        alert("your image has been saved");
-        console.log(response);
+        alert('your image has been saved');
+
         this.setState({
-          post: "",
+          post: '',
         });
       } else {
-        alert("something went wrong");
+        alert('something went wrong');
       }
     } catch (error) {
       console.log(error);

@@ -1,5 +1,5 @@
 import '../JumboProfile.css';
-import React, { Component, createRef } from 'react';
+import React, { Component } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
 
 class ProfilePicModal extends Component {
@@ -14,8 +14,7 @@ class ProfilePicModal extends Component {
     e.preventDefault();
     const formData = new FormData();
     formData.append('picture', this.fileInput.current.files[0]);
-    console.log(formData);
-    console.log('user is', this.props.userId);
+
     try {
       const response = await fetch(
         `https://api-linkedin-api.herokuapp.com/profile/${this.props.userId}/picture`,
@@ -26,7 +25,6 @@ class ProfilePicModal extends Component {
         }
       );
       if (response.ok) {
-        console.log('image succesfully posted');
       }
     } catch (error) {
       console.log(error, 'couldnt post image');
@@ -41,38 +39,6 @@ class ProfilePicModal extends Component {
   onCloseModal = () => {
     this.setState({ openModal: false });
   };
-
-  //   uploadImage = async (e) => {
-  //     e.preventDefault()
-  //     let formData = new FormData()
-  //     // formData.append("file", myFileInput.files[0]);
-
-  //     try {
-  //       let response = await fetch(
-  //         `https://striveschool-api.herokuapp.com/api/posts/${this.props.id}`,
-  //         {
-  //           method: "POST",
-  //           body: formData,
-  //           headers: {
-  //             "Content-Type": "application/json",
-  //             Authorization:
-  //               "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDliYzRmMDkwNTY0YTAwMTU4OGU3M2YiLCJpYXQiOjE2MjA4MjEyMzMsImV4cCI6MTYyMjAzMDgzM30.SbwSggBFs6g6jZgb3C710s3gG93tcV5Fupko2NkKc-w",
-  //           },
-  //         }
-  //       )
-
-  //       if (response.ok) {
-  //         alert("your image has been saved")
-  //         this.setState({
-  //           text: "",
-  //         })
-  //       } else {
-  //         alert("something went wrong")
-  //       }
-  //     } catch (error) {
-  //       console.log(error)
-  //     }
-  //   }
 
   render() {
     console.log('ref -', this.fileInput);

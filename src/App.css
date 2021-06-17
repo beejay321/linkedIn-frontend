@@ -9,3 +9,23 @@ html {
 .feed-container {
   margin-top: 60px;
 }
+.button-cv {
+  margin-top: 0px;
+  margin-left: 10px;
+
+  margin-bottom: 40px;
+
+  border-radius: 20px !important;
+  background-color: rgb(46, 62, 236) !important;
+}
+.button-csv {
+  margin-top: 10px;
+  margin-left: 190px;
+
+  margin-bottom: 40px;
+  border-radius: 20px !important;
+}
+.download-link {
+  text-decoration: none;
+  color: black;
+}

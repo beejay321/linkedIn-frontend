@@ -1,8 +1,7 @@
-import "./Sidebar.css";
-import React from "react";
-import { Accordion, Card, Button, ListGroup } from "react-bootstrap";
-import SidebarPerson from "./SidebarPerson.jsx";
-import { useState, useEffect } from "react";
+import './Sidebar.css';
+import React from 'react';
+import { Card } from 'react-bootstrap';
+import SidebarPerson from './SidebarPerson.jsx';
 
 class Sidebar extends React.Component {
   state = {
@@ -11,7 +10,9 @@ class Sidebar extends React.Component {
 
   componentDidMount = async () => {
     try {
-      const response = await fetch(`https://api-linkedin-api.herokuapp.com/profile`);
+      const response = await fetch(
+        `https://api-linkedin-api.herokuapp.com/profile`
+      );
       if (response.ok) {
         const data = await response.json();
         console.log(data);
@@ -21,38 +22,6 @@ class Sidebar extends React.Component {
       console.log(error);
     }
   };
-
-  /* async function getAllProfiles() {
-  const url = "https://api-linkedin-api.herokuapp.com/profile/";
-  const response = await fetch(url, );
-  const data = await response.json();
-  if (response.ok) {
-    return data;
-  }
-} */
-
-  /* export default function Sidebar() {
-  const [profilesData, updateProfilesData] = useState([]);
-  useEffect(async () => {
-    updateProfilesData(await getAllProfiles());
-  }, []);
-  
-  function mapProfiles(limit) {
-    return profilesData.slice(limit, randomInteger(95, 101)).map((profile) => {
-      return (
-        <SidebarPerson
-          key={profile._id}
-          id={profile._id}
-          image={profile.image}
-          name={profile.name}
-          surname={profile.surname}
-          title={profile.title}
-        />
-      );
-    });
-  
-  
-  }*/
 
   randomInteger(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -67,30 +36,16 @@ class Sidebar extends React.Component {
         <div className="d-flex flex-column my-4">
           <Card.Body className="py-0">
             {this.state.profiles.slice(1).map((profile) => (
-              <SidebarPerson 
-              key={profile._id} 
-              id={profile._id} 
-              image={profile.avatar} 
-              name={profile.name} 
-              surname={profile.surname} 
-              title={profile.title} />
+              <SidebarPerson
+                key={profile._id}
+                id={profile._id}
+                image={profile.avatar}
+                name={profile.name}
+                surname={profile.surname}
+                title={profile.title}
+              />
             ))}
           </Card.Body>
-
-          {/*  <Accordion defaultActiveKey="0">
-          <Accordion.Collapse eventKey="1">
-            <Card.Body> {mapProfileShowMore(randomInteger(45, 49))}</Card.Body>
-          </Accordion.Collapse>
-          <Card.Header
-            onclick="myFunction()"
-            id="sidebar-showmore"
-            className="p-0 m-0 full-width text-center bg-white"
-          >
-            <Accordion.Toggle as={Button} variant="link" eventKey="1">
-              Show More
-            </Accordion.Toggle>
-          </Card.Header>
-        </Accordion>*/}
         </div>
       </Card>
     );

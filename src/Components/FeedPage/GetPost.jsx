@@ -1,46 +1,50 @@
-import './Post.css';
-import PostCard from './PostCard.jsx';
-import { useState, useEffect } from 'react';
+import "./Post.css";
+import React from "react";
+import PostCard from "./PostCard.jsx";
 
-async function getAllPosts() {
-  const url = 'https://api-linkedin-api.herokuapp.com/posts';
-  const response = await fetch(url);
-  const data = await response.json();
-  // console.log(data);
-  if (response.ok) {
-    return data;
+class GetPosts extends React.Component {
+  state = {
+    posts: [],
+  };
+
+  componentDidMount = async () => {
+    try {
+      const response = await fetch(`https://api-linkedin-api.herokuapp.com/posts`);
+      if (response.ok) {
+        const data = await response.json();
+        console.log(data);
+        this.setState({ posts: data });
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  render() {
+    return (
+      <>
+        {this.state.posts
+          .slice(-7)
+          .reverse()
+          .map((post) => (
+            <PostCard
+              key={post.createdAt}
+              id={post._id}
+              text={post.text}
+              username={post.user[0].username}
+              image={post.user[0].avatar}
+              firstname={post.user[0].name}
+              lastname={post.user[0].surname}
+              title={post.user[0].title}
+              updatedDate={post.updatedAt}
+              postimage={post.image}
+              profilepic={this.props.image}
+              profile={post.user[0]}
+            />
+          ))}
+      </>
+    );
   }
 }
+export default GetPosts;
 
-export default function GetPost(props) {
-  const [postData, updatePostData] = useState([]);
-  useEffect(async () => {
-    updatePostData(await getAllPosts());
-  }, []);
-  console.log('postData', postData._id);
 
-  function mapPosts(amount) {
-    // const postLength = postData.length;
-    return postData.slice(-7).map((post) => {
-      console.log(post.user[0].image);
-      return (
-        <PostCard
-          key={post.createdAt}
-          id={post._id}
-          text={post.text}
-          username={post.user[0].username}
-          image={post.user[0].avatar}
-          firstname={post.user[0].name}
-          lastname={post.user[0].surname}
-          title={post.user[0].title}
-          updatedDate={post.updatedAt}
-          postimage={post.image}
-          profilepic={props.image}
-          profile={post.user[0]}
-        />
-      );
-    });
-  }
-
-  return <div>{mapPosts().reverse()}</div>;
-}

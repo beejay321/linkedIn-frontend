@@ -1,8 +1,8 @@
-import { Button, Container, Row, Navbar, Form, Col } from "react-bootstrap";
-import React from "react";
-import { Link, withRouter } from "react-router-dom";
-import "../Footer.css";
-import "bootstrap-icons/font/bootstrap-icons.css";
+import { Container, Row, Form, Col } from 'react-bootstrap';
+import React from 'react';
+import { withRouter } from 'react-router-dom';
+import '../Footer.css';
+import 'bootstrap-icons/font/bootstrap-icons.css';
 // import Linkedin-Logo.png from ".../public/Linkedin-Logo.png"
 
 class Footer extends React.Component {
@@ -48,16 +48,16 @@ class Footer extends React.Component {
           <Col xs={3}>
             <ul>
               <li className="footerlist footer-flex mr-3">
-                <i className="bi bi-question-circle-fill fs-4 mr-3"></i>{" "}
+                <i className="bi bi-question-circle-fill fs-4 mr-3"></i>{' '}
                 <span>
-                  <a>Questions</a>
+                  <a href="http://google.com">Questions</a>
                   <p className="text-muted">Visit our Help Center</p>
                 </span>
               </li>
               <li className="footerlist footer-flex">
-                <i className="bi bi-gear-fill fs-5 mr-3"></i>{" "}
+                <i className="bi bi-gear-fill fs-5 mr-3"></i>{' '}
                 <span>
-                  <a>Manage your account</a>
+                  <a href="http://google.com">Manage your account</a>
                   <p className="text-muted">Go to your Settings</p>
                 </span>
               </li>

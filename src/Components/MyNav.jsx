@@ -2,8 +2,6 @@ import {
   InputGroup,
   Container,
   Form,
-  Col,
-  Row,
   FormControl,
   Navbar,
   Nav,
@@ -52,7 +50,7 @@ class MyNav extends React.Component {
                 <InputGroup>
                   <InputGroup.Prepend>
                     <InputGroup.Text>
-                      <i id="search-icon" class="bi bi-search"></i>
+                      <i id="search-icon" className="bi bi-search"></i>
                     </InputGroup.Text>
                   </InputGroup.Prepend>
                   <FormControl
@@ -93,7 +91,11 @@ class MyNav extends React.Component {
                 <span>Notifications</span>
               </Nav.Link>
 
-              <Nav.Link onClick={() => this.props.history.push('/user/me')}>
+              <Nav.Link
+                onClick={() =>
+                  this.props.history.push('/user/60c9be8b6f63455fa0ee7849')
+                }
+              >
                 <i className="bi bi-person-circle"></i> <span> Me</span>
               </Nav.Link>
 
@@ -105,20 +107,6 @@ class MyNav extends React.Component {
                   Reactivate <br /> Premium
                 </span>
               </Nav.Link>
-
-              {/* <Nav.Link href="#pricing" className="ml-3">
-                <i className="bi bi-grid-3x3-gap-fill"></i>{" "}
-                <span>
-                  <NavDropdown
-                    title="Work"
-                    id="basic-nav-dropdown"
-                  ></NavDropdown>
-                </span>
-              </Nav.Link> */}
-
-              {/* <NavDropdown title="Work" id="basic-nav-dropdown">
-                    
-                  </NavDropdown> */}
             </Nav>
           </Container>
         </Navbar>
