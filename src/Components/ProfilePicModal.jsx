@@ -14,8 +14,7 @@ class ProfilePicModal extends Component {
     e.preventDefault();
     const formData = new FormData();
     formData.append('picture', this.fileInput.current.files[0]);
-    console.log(formData);
-    console.log('user is', this.props.userId);
+
     try {
       const response = await fetch(
         `https://api-linkedin-api.herokuapp.com/profile/${this.props.userId}/picture`,
@@ -26,7 +25,6 @@ class ProfilePicModal extends Component {
         }
       );
       if (response.ok) {
-        console.log('image succesfully posted');
       }
     } catch (error) {
       console.log(error, 'couldnt post image');

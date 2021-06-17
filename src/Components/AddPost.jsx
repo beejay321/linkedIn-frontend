@@ -28,10 +28,10 @@ class AddPost extends React.Component {
       );
 
       if (response.ok) {
+        alert('Sucesfully posted, you can now close the window :)');
         if (this.state.cover !== undefined) {
           const data = await response.json();
           const id = data._id;
-          console.log('this is the post id', id);
 
           let newResponse = await fetch(
             `https://api-linkedin-api.herokuapp.com/posts/${id}/upload`,
@@ -42,9 +42,7 @@ class AddPost extends React.Component {
             }
           );
           if (newResponse.ok) {
-            console.log('File uploaded successfully');
-           
-
+            alert('Sucesfully posted, you can now close the window :)');
           }
         } else {
           console.log('File was not uploaded!');
@@ -57,12 +55,11 @@ class AddPost extends React.Component {
 
   selectImage = (e) => {
     e.preventDefault();
-    console.log(e.target.files[0]);
+
     const file = e.target.files[0];
     let formData = new FormData();
     formData.append('cover', file);
-    console.log(this.state.cover);
-    console.log(formData);
+
     this.setState({
       ...this.state,
       cover: formData,

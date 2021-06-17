@@ -1,7 +1,7 @@
-import React from "react";
-import "../../Sidebar/Sidebar.css";
-import { Image, Row, Col, Button, Card } from "react-bootstrap";
-import "../Post.css";
+import React from 'react';
+import '../../Sidebar/Sidebar.css';
+import { Image, Row, Col, Button, Card } from 'react-bootstrap';
+import '../Post.css';
 
 const RightColumnOnePerson = (props) => {
   return (
@@ -11,10 +11,10 @@ const RightColumnOnePerson = (props) => {
           <Image className="sidebar-img" src={props.image} />
         </Col>
         <Col xs={9} className="align-text-bottom">
-          <Card.Link className="sidebar-person-name">
+          <Card.Link to={`/user/${props.id}`} className="sidebar-person-name">
             {props.name} {props.surname}
           </Card.Link>
-          <span className="sidebar-span text-muted">{" \u2022 "}</span>
+          <span className="sidebar-span text-muted">{' \u2022 '}</span>
           <span className="sidebar-span text-muted">2nd</span>
           <p className="sidebar-p text-muted">{props.title}</p>
         </Col>

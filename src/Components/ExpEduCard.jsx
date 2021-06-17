@@ -1,7 +1,7 @@
-import { Row, Col } from "react-bootstrap";
-import "../ExpEduCard.css";
-import ModalForm from "./MyModal";
-import React from "react";
+import { Row, Col } from 'react-bootstrap';
+import '../ExpEduCard.css';
+import ModalForm from './MyModal';
+import React from 'react';
 
 class ExpEduCard extends React.Component {
   state = {
@@ -9,7 +9,7 @@ class ExpEduCard extends React.Component {
     userId: this.props.userId,
     userName: this.props.userName,
     experience: { ...this.props.experience },
-    formRequest: "",
+    formRequest: '',
     expImage: null,
   };
 
@@ -17,33 +17,35 @@ class ExpEduCard extends React.Component {
 
   handleEdit = async (e) => {
     e.preventDefault();
-    console.log("ciaociao");
+
     try {
-      const response = await fetch(`https://api-linkedin-api.herokuapp.com/profile/${this.state.userId}/experiences/${this.state.expId}`, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(this.state.experience),
-      });
+      const response = await fetch(
+        `https://api-linkedin-api.herokuapp.com/profile/${this.state.userId}/experiences/${this.state.expId}`,
+        {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(this.state.experience),
+        }
+      );
       if (response.ok) {
         const data = await response.json();
-        console.log(data);
       }
     } catch (error) {
       console.log(error);
     }
 
-    console.log(this.inputFile);
-
     try {
-      const response = await fetch(`https://api-linkedin-api.herokuapp.com/profile/${this.state.userId}/experiences/${this.state.expId}/picture`, {
-        method: "POST",
+      const response = await fetch(
+        `https://api-linkedin-api.herokuapp.com/profile/${this.state.userId}/experiences/${this.state.expId}/picture`,
+        {
+          method: 'POST',
 
-        body: this.state.expImage,
-      });
+          body: this.state.expImage,
+        }
+      );
       if (response.ok) {
-        console.log("exp image uploaded");
       }
     } catch (error) {
       console.log(error);
@@ -52,18 +54,20 @@ class ExpEduCard extends React.Component {
 
   handleDelete = async (e) => {
     e.preventDefault();
-    console.log("ciaociao");
+
     try {
-      const response = await fetch(`https://api-linkedin-api.herokuapp.com/profile/${this.state.userId}/experiences/${this.state.expId}`, {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(this.state.experience),
-      });
+      const response = await fetch(
+        `https://api-linkedin-api.herokuapp.com/profile/${this.state.userId}/experiences/${this.state.expId}`,
+        {
+          method: 'DELETE',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(this.state.experience),
+        }
+      );
       if (response.ok) {
         const data = await response.json();
-        console.log(data);
       }
     } catch (error) {
       console.log(error);
@@ -72,19 +76,18 @@ class ExpEduCard extends React.Component {
 
   handleChange = (e) => {
     e.preventDefault();
-    console.log("stuff changing");
+
     let id = e.target.id;
     this.setState({
       experience: { ...this.state.experience, [id]: e.target.value },
     });
-    console.log(this.state.experience);
   };
 
   selectImage = (e) => {
     e.preventDefault();
     const file = e.target.files[0];
     let formData = new FormData();
-    formData.append("experience", file);
+    formData.append('experience', file);
     this.setState({
       expImage: formData,
     });

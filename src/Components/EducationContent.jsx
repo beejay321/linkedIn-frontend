@@ -1,6 +1,6 @@
-import ExpEduCard from "./ExpEduCard"
+import ExpEduCard from './ExpEduCard';
 
-const EducationContent = (props) => {
+const EducationContent = () => {
   return (
     <>
       <ExpEduCard
@@ -25,7 +25,7 @@ const EducationContent = (props) => {
         location="New York City, NY, USA"
       />
     </>
-  )
-}
+  );
+};
 
-export default EducationContent
+export default EducationContent;
