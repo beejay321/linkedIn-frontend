@@ -1,6 +1,6 @@
 import React from "react";
 import "../../Sidebar/Sidebar.css";
-import { Image, Row, Col, Button, Card } from "react-bootstrap";
+import { Image, Row, Col, Button } from "react-bootstrap";
 import "../Post.css";
 import { Link } from "react-router-dom";
 
