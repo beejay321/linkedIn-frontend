@@ -6,7 +6,7 @@ export default function RightColumnTwo() {
     <Card className="RightColumn-card RightColumnTwo-card">
       <Card.Header className="bg-white">
         <span className="pr-2">Today's most viewed courses</span>
-        <i class="bi bi-info-square-fill"></i>
+        <i className="bi bi-info-square-fill"></i>
       </Card.Header>
       <Card.Text className="m-0 p-0  px-3">
         <Card.Text>
@@ -37,7 +37,7 @@ export default function RightColumnTwo() {
         <hr />
         <Card.Text>
           <span className="text-muted">
-            Show more LinkedIn Learning <i class="bi bi-arrow-right"></i>
+            Show more LinkedIn Learning <i className="bi bi-arrow-right"></i>
           </span>
         </Card.Text>
       </Card.Text>

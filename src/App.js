@@ -8,7 +8,6 @@ import Footer from './Components/Footer.jsx';
 import Feeds from './Components/Feeds.jsx';
 import SearchResults from './Components/SearchResults.jsx';
 import nothingHere from './Components/nothingHere.jsx';
-import Sidebar from './Components/Sidebar/Sidebar.jsx';
 class App extends React.Component {
   state = {
     query: '',

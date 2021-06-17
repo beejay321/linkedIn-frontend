@@ -3,7 +3,7 @@ import "./Post.css";
 import { Card, Col, Row, Image, InputGroup, FormControl, Button, Accordion, DropdownButton, Dropdown } from "react-bootstrap";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import { Link } from "react-router-dom";
-import { AiOutlineLike } from "react-icons/ai";
+// import { AiOutlineLike } from "react-icons/ai";
 
 class PostCard extends React.Component {
   state = {
@@ -239,7 +239,10 @@ class PostCard extends React.Component {
                 </Row>
               </Button>
 
-              <Button className="getPost-send-btn mx-1" onClick={this.addComment} type="submit" id="savecommentbtn" variant="outline" size="md" className="text-muted ">
+              <Button className=" text-muted getPost-send-btn mx-1" 
+              onClick={this.addComment} type="submit" 
+              id="savecommentbtn" variant="outline" 
+              size="md" >
                 <Row>
                   <span>
                     <i class="bi bi-cursor"></i>
@@ -286,7 +289,7 @@ class PostCard extends React.Component {
                     </Col>
                   </Row>
                   {this.state.comments.map((item) => (
-                    <Row className="commentDiv">
+                    <Row className="commentDiv" key = {item._id} >
                       <Col className="float-left " xs={2}>
                         <Image className="getPost-img" src={item.user.avatar} />
                       </Col>

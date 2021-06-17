@@ -5,10 +5,10 @@ import {
   FormControl,
   Navbar,
   Nav,
-  NavDropdown,
+  
 } from 'react-bootstrap';
 import React from 'react';
-import { Link, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import '../Nav.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 
@@ -17,20 +17,7 @@ class MyNav extends React.Component {
     return (
       // <h1>Linked in </h1>
       <>
-        {/* <Navbar bg="light" variant="white">
-          <Container>
-            <Row>
-              <Nav className="mr-auto ">
-                <Col>
-                  <h1>Navbar</h1>
-                </Col>
-                <Col>
-                  <h1>Navbar</h1>
-                </Col>
-              </Nav>
-            </Row>
-          </Container>
-        </Navbar> */}
+        
 
         <Navbar bg="light" variant="white" className="nav-thin" fixed="top">
           <Container>
