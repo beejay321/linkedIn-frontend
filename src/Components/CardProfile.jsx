@@ -46,7 +46,8 @@ class CardProfile extends React.Component {
             <div className="section-title mb-3">{this.props.title}</div>
             <div>
               {this.props.title === 'Experience' &&
-                this.props.isMe === 'me' && (
+                this.props.isMe === '60c9be8b6f63455fa0ee7849' &&
+                 (
                   <ModalForm
                     handleSubmit={this.handleSubmit}
                     handleChange={this.handleChange}
