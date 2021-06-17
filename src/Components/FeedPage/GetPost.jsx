@@ -1,6 +1,6 @@
-import "./Post.css";
-import React from "react";
-import PostCard from "./PostCard.jsx";
+import './Post.css';
+import React from 'react';
+import PostCard from './PostCard.jsx';
 
 class GetPosts extends React.Component {
   state = {
@@ -9,7 +9,9 @@ class GetPosts extends React.Component {
 
   componentDidMount = async () => {
     try {
-      const response = await fetch(`https://api-linkedin-api.herokuapp.com/posts`);
+      const response = await fetch(
+        `https://api-linkedin-api.herokuapp.com/posts`
+      );
       if (response.ok) {
         const data = await response.json();
         console.log(data);
@@ -46,5 +48,3 @@ class GetPosts extends React.Component {
   }
 }
 export default GetPosts;
-
-
