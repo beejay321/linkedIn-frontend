@@ -8,6 +8,21 @@
   width: 50px;
 }
 
+.postImg {
+  height: 320px;
+}
+.commentDiv {
+  margin-bottom: 20px;
+  margin-top: 5px;
+}
+.commentCol {
+  margin-left: 10px;
+}
+.editDel {
+  margin-right: 220px;
+  font-size: 0.8rem;
+}
+
 .getPost-commentInput {
   border-radius: 20px !important;
   height: 40px;
