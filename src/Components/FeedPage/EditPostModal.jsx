@@ -1,9 +1,9 @@
 // import React from "react";
 import React, { Component } from "react";
 import { Modal, Button, Form, Col, Row } from "react-bootstrap";
-import "../CardProfile.css";
+import "../../CardProfile.css";
 
-class AddPostModal extends Component {
+class EditPostModal extends Component {
   state = {
     show: false,
   };
@@ -19,11 +19,9 @@ class AddPostModal extends Component {
   render() {
     return (
       <>
-        
-
-        <Button onClick={this.onClickButton} id="postbutton" variant="outline" size="md" className="text-muted ">
-          Start a Post
-        </Button>
+        <span variant="outline" size="md" className="text-muted " onClick={this.onClickButton}>
+          <i className="bi bi-pencil-square"></i>
+        </span>
 
         <Modal show={this.state.openModal} onHide={this.onCloseModal}>
           <Modal.Header closeButton>
@@ -97,7 +95,7 @@ class AddPostModal extends Component {
             </div>
 
             <div>
-              <Button onClick={this.props.submitPost} type="submit" id="savepostbtn" variant="outline" size="md" className="text-muted ">
+              <Button onClick={this.props.handleSubmit} type="submit" id="savepostbtn" variant="outline" size="md" className="text-muted ">
                 Post
               </Button>
             </div>
@@ -108,4 +106,4 @@ class AddPostModal extends Component {
   }
 }
 
-export default AddPostModal;
+export default EditPostModal;

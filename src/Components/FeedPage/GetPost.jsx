@@ -19,6 +19,7 @@ class GetPosts extends React.Component {
       console.log(error);
     }
   };
+
   render() {
     return (
       <>
@@ -27,6 +28,7 @@ class GetPosts extends React.Component {
           .reverse()
           .map((post) => (
             <PostCard
+              post={post}
               key={post.createdAt}
               id={post._id}
               text={post.text}

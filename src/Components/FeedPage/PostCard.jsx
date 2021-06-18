@@ -4,6 +4,7 @@ import { Card, Col, Row, Image, InputGroup, FormControl, Button, Accordion, Drop
 import "bootstrap-icons/font/bootstrap-icons.css";
 import { Link } from "react-router-dom";
 // import { AiOutlineLike } from "react-icons/ai";
+import EditPostModal from "./EditPostModal";
 
 class PostCard extends React.Component {
   state = {
@@ -13,14 +14,58 @@ class PostCard extends React.Component {
     new: {
       comment: "",
     },
-
+    postEdit: { ...this.props.post },
     clicked: [],
+    cover: undefined,
   };
-
 
   componentDidMount = async () => {
     this.grabLikes();
     this.getComments();
+  };
+
+  editPost = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await fetch(`https://api-linkedin-api.herokuapp.com/posts/${this.props.id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(this.state.postEdit),
+      });
+      if (response.ok) {
+        alert("post edited");
+        const data = await response.json();
+        console.log(data);
+      } else {
+        alert("unsuccessful");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  deletePost = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await fetch(`https://api-linkedin-api.herokuapp.com/posts/${this.props.id}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(this.state.postEdit),
+      });
+      if (response.ok) {
+        alert("post deleted");
+        const data = await response.json();
+        console.log(data);
+      } else {
+        alert("post not deleted");
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   grabLikes = async () => {
@@ -35,8 +80,6 @@ class PostCard extends React.Component {
       console.log(error);
     }
   };
-
- 
 
   addLike = async (postId) => {
     try {
@@ -139,7 +182,7 @@ class PostCard extends React.Component {
     let id = e.target.id;
     this.setState({
       ...this.state,
-      new: { ...this.state.new, [id]: e.target.value },
+      postEdit: { ...this.state.postEdit, [id]: e.target.value },
     });
   };
 
@@ -169,6 +212,15 @@ class PostCard extends React.Component {
                 <span className="text-muted">{this.props.updatedDate}</span>
               </Col>
               <Col className="float-right" xs={1}>
+                {/* <EditPostModal
+                      formType="edit"
+                      selectImage={this.selectImage}
+                      inputFile={this.inputFile}
+                      handleDelete={this.deletePost}
+                      handleSubmit={this.editPost}
+                      handleChange={this.handleChange}                      
+                    /> */}
+
                 <DropdownButton
                   className="getPost-dropDown-button rounded-circle"
                   as={InputGroup.Prepend}
@@ -177,17 +229,32 @@ class PostCard extends React.Component {
                   id="input-group-dropdown-1"
                 >
                   <Dropdown.Item href="#">
-                    <i class="bi bi-bookmark"></i> Save
+                    <EditPostModal
+                      formType="edit"
+                      selectImage={this.selectImage}
+                      inputFile={this.inputFile}
+                      handleDelete={this.deletePost}
+                      handleSubmit={this.editPost}
+                      handleChange={this.handleChange}
+                      handleChange={this.handleChange}
+                      close={this.state.modalDisappear}
+                    />
+                  </Dropdown.Item>
+                  <Dropdown.Item href="#" onClick={this.deletePost}>
+                    <i className="bi bi-trash"></i> Delete
                   </Dropdown.Item>
                   <Dropdown.Item href="#">
-                    <i class="bi bi-link-45deg"></i> Copy Link action
+                    <i className="bi bi-bookmark"></i> Save
                   </Dropdown.Item>
                   <Dropdown.Item href="#">
-                    <i class="bi bi-eye-slash"></i> I don't want to see this else here
+                    <i className="bi bi-link-45deg"></i> Copy Link action
+                  </Dropdown.Item>
+                  <Dropdown.Item href="#">
+                    <i className="bi bi-eye-slash"></i> I don't want to see this else here
                   </Dropdown.Item>
 
                   <Dropdown.Item href="#">
-                    <i class="bi bi-megaphone"></i> Report
+                    <i className="bi bi-megaphone"></i> Report
                   </Dropdown.Item>
                 </DropdownButton>
                 <Button className="bg-white border-0"></Button>
@@ -225,7 +292,6 @@ class PostCard extends React.Component {
               </Button>
 
               <Accordion.Toggle as={Button} variant="link" eventKey="1">
-
                 <Button className="getPost-comment-btn mx-1">
                   <Row>
                     <span>
@@ -243,10 +309,7 @@ class PostCard extends React.Component {
                 </Row>
               </Button>
 
-              <Button className=" text-muted getPost-send-btn mx-1" 
-              onClick={this.addComment} type="submit" 
-              id="savecommentbtn" variant="outline" 
-              size="md" >
+              <Button className=" text-muted getPost-send-btn mx-1" onClick={this.addComment} type="submit" id="savecommentbtn" variant="outline" size="md">
                 <Row>
                   <span>
                     <i class="bi bi-cursor"></i>
@@ -293,7 +356,7 @@ class PostCard extends React.Component {
                     </Col>
                   </Row>
                   {this.state.comments.map((item) => (
-                    <Row className="commentDiv" key = {item._id} >
+                    <Row className="commentDiv" key={item._id}>
                       <Col className="float-left " xs={2}>
                         <Image className="getPost-img" src={item.user.avatar} />
                       </Col>
@@ -327,8 +390,6 @@ class PostCard extends React.Component {
                       </Col>
                     </Row>
                   ))}
-
-                 
                 </div>
               </Accordion.Collapse>
             </Col>

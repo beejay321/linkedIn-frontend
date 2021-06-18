@@ -261,6 +261,9 @@ hr {
   color: #6c757d;
   transition: all 0.2s ease-in-out;
 }
+.smallIcons {
+  font-size: 0.8rem;
+}
 
 .feeds-icons-bottom {
   font-size: 24px;
@@ -271,7 +274,7 @@ hr {
 .feeds-like-reactions {
   display: none;
   position: absolute;
-  bottom: 80px;
+  bottom: 130px;
   left: 30px;
   background-color: rgb(243, 235, 235);
   border: 1px solid rgba(0, 0, 0, 0.2);
