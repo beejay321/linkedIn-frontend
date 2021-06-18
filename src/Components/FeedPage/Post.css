@@ -177,7 +177,7 @@ hr {
 .LeftColumnTwo-card {
   border-radius: 10px !important;
   overflow: hidden;
-  position: fixed;
+  /* position: fixed; */
 }
 
 .LeftColumnTwo-card .card-header:nth-child(1n + 2) {
