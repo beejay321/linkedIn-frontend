@@ -21,7 +21,7 @@ const ExperienceContent = (props) => {
           id={exp._id}
           img={
             exp.image 
-            // ||  'https://res.cloudinary.com/dmqsfltrf/image/upload/v1607933865/linkedin/d5ncpqvqrjwdxixjuyjr.ico'
+            ||  'https://res.cloudinary.com/dmqsfltrf/image/upload/v1607933865/linkedin/d5ncpqvqrjwdxixjuyjr.ico'
           }
         />
       ))}
