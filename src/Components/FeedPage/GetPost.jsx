@@ -30,7 +30,7 @@ class GetPosts extends React.Component {
       <>
         <div>
           {this.state.isLoading && (
-            <Spinner animation="border" role="status">
+            <Spinner className = "Spinner" animation="border" role="status">
               {/* <span className="sr-only"></span> */}
             </Spinner>
           )}

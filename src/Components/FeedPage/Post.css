@@ -235,6 +235,9 @@ hr {
   position: fixed;
   font-size: 12px;
 }
+.Spinner {
+  margin-left: 250px;
+}
 
 .RightColumn-card .RightColumnTwo-card .card-header {
   font-size: 12px !important;
