@@ -43,7 +43,7 @@ class AddPost extends React.Component {
             }
           );
           if (newResponse.ok) {
-            alert('Sucesfully posted, you can now close the window :)');
+            alert('Sucessfully posted, you can now close the window :)');
           }
         } else {
           console.log('File was not uploaded!');
