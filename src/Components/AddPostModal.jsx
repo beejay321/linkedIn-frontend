@@ -29,6 +29,7 @@ class AddPostModal extends Component {
           <Modal.Header closeButton>
             <Modal.Title>Create a post</Modal.Title>
           </Modal.Header>
+          <Form onSubmit={this.props.submitPost}>
           <Modal.Body>
             <Form.Group>
               <Form.Control
@@ -97,11 +98,14 @@ class AddPostModal extends Component {
             </div>
 
             <div>
-              <Button onClick={this.props.submitPost} type="submit" id="savepostbtn" variant="outline" size="md" className="text-muted ">
+              <Button 
+              onClick={this.onCloseModal} 
+              type="submit" id="savepostbtn" variant="outline" size="md" className="text-muted ">
                 Post
               </Button>
             </div>
           </Modal.Body>
+          </Form>
         </Modal>
       </>
     );

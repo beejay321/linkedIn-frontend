@@ -1,15 +1,14 @@
-import { Card, Image, Button, Row, Col } from 'react-bootstrap';
-import '../CardProfile.css';
-import AddPostModal from './AddPostModal';
+import { Card, Image, Button, Row, Col } from "react-bootstrap";
+import "../CardProfile.css";
+import AddPostModal from "./AddPostModal";
 
-import React from 'react';
+import React from "react";
 
 class AddPost extends React.Component {
   state = {
     new: {
-      text: '',
-      user: '60c9be8b6f63455fa0ee7849',
-     
+      text: "",
+      user: "60c9be8b6f63455fa0ee7849",
     },
     cover: undefined,
   };
@@ -17,36 +16,29 @@ class AddPost extends React.Component {
   submitPost = async (e) => {
     e.preventDefault();
     try {
-      let response = await fetch(
-        'https://api-linkedin-api.herokuapp.com/posts',
-        {
-          method: 'POST',
-          body: JSON.stringify(this.state.new),
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        }
-      );
+      let response = await fetch("https://api-linkedin-api.herokuapp.com/posts", {
+        method: "POST",
+        body: JSON.stringify(this.state.new),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
 
       if (response.ok) {
-        alert('Sucessfully posted, you can now close the window :)');
         if (this.state.cover !== undefined) {
           const data = await response.json();
           const id = data._id;
 
-          let newResponse = await fetch(
-            `https://api-linkedin-api.herokuapp.com/posts/${id}/upload`,
-            {
-              method: 'POST',
+          let newResponse = await fetch(`https://api-linkedin-api.herokuapp.com/posts/${id}/upload`, {
+            method: "POST",
 
-              body: this.state.cover,
-            }
-          );
+            body: this.state.cover,
+          });
           if (newResponse.ok) {
-            alert('Sucessfully posted, you can now close the window :)');
+            alert("Sucessfully posted");
           }
         } else {
-          console.log('File was not uploaded!');
+          console.log("File was not uploaded!");
         }
       }
     } catch (error) {
@@ -59,7 +51,7 @@ class AddPost extends React.Component {
 
     const file = e.target.files[0];
     let formData = new FormData();
-    formData.append('cover', file);
+    formData.append("cover", file);
 
     this.setState({
       ...this.state,
@@ -80,13 +72,7 @@ class AddPost extends React.Component {
       <>
         <Card>
           <Card.Body className="d-flex ">
-            <Image
-              src={this.props.image}
-              height="50"
-              width="50"
-              roundedCircle
-              alt=""
-            />
+            <Image src={this.props.image} height="50" width="50" roundedCircle alt="" />
 
             {/* <Button variant="secondary" size="md" block>
             Start a Post
