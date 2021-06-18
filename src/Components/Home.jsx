@@ -9,7 +9,6 @@ import EducationContent from "./EducationContent";
 import SkillsContent from "./SkillsContent";
 import AccomplishmentsContent from "./AccomplishmentsContent";
 import InterestsContent from "./InterestsContent";
-import ProfileSummary from "./ProfileSummary"
 
 class Home extends React.Component {
   state = {
@@ -93,7 +92,6 @@ class Home extends React.Component {
                   area={this.state.user.area}
                   image={this.state.user.avatar}
                 />
-                <CardProfile  content={<ProfileSummary user={this.state.user} />} />
                 <CardProfile title="About" content={<About bio={this.state.user.bio} />} />
                 <CardProfile
                   title="Experience"
