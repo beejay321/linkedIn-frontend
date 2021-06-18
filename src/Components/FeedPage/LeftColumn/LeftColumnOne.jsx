@@ -1,18 +1,17 @@
-import React from 'react';
-import '../Post.css';
-import { Card, Image } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
-import 'bootstrap-icons/font/bootstrap-icons.css';
+import React from "react";
+import "../Post.css";
+import { Card, Image } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import "bootstrap-icons/font/bootstrap-icons.css";
 
 const LeftColumnOne = (props) => {
   return (
     <Card className="feedLeft-card">
       <Card.Header id="feedLeft-card-header" className="p-0">
-        <Image
-          className="feedLeft-cover-img"
-          src="http://placeimg.com/500/150/arch"
-        />
-        <Image className="feedLeft-profile-img" src={props.image} />
+        <Image className="feedLeft-cover-img" src="http://placeimg.com/500/150/arch" />
+        <Link to={`/user/60c9be8b6f63455fa0ee7849`}>
+          <Image className="feedLeft-profile-img" src={props.image} />
+        </Link>
       </Card.Header>
       <Card.Body className="mt-5  p-0">
         <Card.Title className="text-center">

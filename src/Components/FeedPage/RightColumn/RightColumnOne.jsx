@@ -29,7 +29,7 @@ class RightColumnOne extends React.Component {
     return (
       <Card className="RightColumn-card">
         <Card.Header className="bg-white border-0">
-          <h5 className="text-left">Add to your feed</h5>
+          <h5 className="text-left">{this.props.title}</h5>
         </Card.Header>
         <div className="d-flex flex-column my-4">
           <Card.Body className="py-0">

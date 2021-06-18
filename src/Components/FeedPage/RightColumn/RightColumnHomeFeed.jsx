@@ -7,7 +7,9 @@ class RightColumnHomeFeed extends React.Component {
   render() {
     return (
       <>
-        <RightColumnOne />
+        <RightColumnOne title = {"My Connections"} />
+        <RightColumnOne title = {"People Also Viewed"} />
+        <RightColumnTwo />
         <RightColumnTwo />
       </>
     );

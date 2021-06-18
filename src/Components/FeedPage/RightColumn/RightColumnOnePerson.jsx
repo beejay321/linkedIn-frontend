@@ -9,7 +9,9 @@ const RightColumnOnePerson = (props) => {
     <>
       <Row>
         <Col xs={3}>
+        <Link to={`/user/${props.id}`} >
           <Image className="sidebar-img" src={props.image} />
+          </Link>
         </Col>
         <Col xs={9} className="align-text-bottom">
           <Link to={`/user/${props.id}`} className="sidebar-person-name">

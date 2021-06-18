@@ -274,7 +274,7 @@ hr {
 .feeds-like-reactions {
   display: none;
   position: absolute;
-  bottom: 130px;
+  bottom: 80px;
   left: 30px;
   background-color: rgb(243, 235, 235);
   border: 1px solid rgba(0, 0, 0, 0.2);

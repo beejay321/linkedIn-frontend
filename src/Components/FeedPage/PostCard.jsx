@@ -16,6 +16,7 @@ class PostCard extends React.Component {
     },
     postEdit: { ...this.props.post },
     clicked: [],
+    numberOfLikes : 1,
     cover: undefined,
   };
 
@@ -87,7 +88,9 @@ class PostCard extends React.Component {
       if (response.ok) {
         const data = await response.json();
         console.log("HERE ARE ALL THE LIKES", data.likes);
-        this.setState({ clicked: data.likes });
+        const count = data.likes.length
+        console.log(count)
+        this.setState({ clicked: data.likes, numberOfLikes: count});
       }
     } catch (error) {
       console.log(error);
@@ -281,7 +284,7 @@ class PostCard extends React.Component {
             <hr className="text-muted my-0 py-0" />
             <Col className="getPost-comment-section ">
               <span>
-                <span className="feeds-group-icons-like">see likes</span>
+                <span className="feeds-group-icons-like">{this.state.numberOfLikes} likes</span>
                 <div className="feeds-like-reactions">
                   {/* {this.state.clicked.name} */}
                   {this.state.clicked.map((item) => {

@@ -35,6 +35,7 @@ class LeftColumnHomeFeed extends React.Component {
           image={this.props.user.avatar}
         />
         <LeftColumnTwo />
+        <LeftColumnTwo />
       </>
     );
   }
