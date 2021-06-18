@@ -236,7 +236,6 @@ class PostCard extends React.Component {
                       handleDelete={this.deletePost}
                       handleSubmit={this.editPost}
                       handleChange={this.handleChange}
-                      handleChange={this.handleChange}
                       close={this.state.modalDisappear}
                     />
                   </Dropdown.Item>
