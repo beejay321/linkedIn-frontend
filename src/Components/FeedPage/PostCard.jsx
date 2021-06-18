@@ -17,7 +17,13 @@ class PostCard extends React.Component {
     clicked: [],
   };
 
+
   componentDidMount = async () => {
+    this.grabLikes();
+    this.getComments();
+  };
+
+  grabLikes = async () => {
     try {
       const response = await fetch(`https://api-linkedin-api.herokuapp.com/posts/${this.props.id}/likes`);
       if (response.ok) {
@@ -30,10 +36,7 @@ class PostCard extends React.Component {
     }
   };
 
-  componentDidMount = async (postId) => {
-    // this.grabLikes(postId);
-    this.getComments();
-  };
+ 
 
   addLike = async (postId) => {
     try {
@@ -198,7 +201,6 @@ class PostCard extends React.Component {
               <Card.Img className="postImg" src={this.props.postimage} />
             </div>{" "}
             <hr className="text-muted my-0 py-0" />
-            <Col className="getPost-comment-section ">
               <span>
                 <span className="feeds-group-icons-like">see likes</span>
                 <div className="feeds-like-reactions">
@@ -212,6 +214,7 @@ class PostCard extends React.Component {
                   })}
                 </div>
               </span>
+            <Col className="getPost-comment-section ">
 
               <Button className="getPost-like-btn mx-1" onClick={() => this.addLike(this.props.id)}>
                 <Row>
