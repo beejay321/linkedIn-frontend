@@ -186,6 +186,14 @@ class PostCard extends React.Component {
     });
   };
 
+  commentChange = (e) => {
+    let id = e.target.id;
+    this.setState({
+      ...this.state,
+      new: { ...this.state.new, [id]: e.target.value },
+    });
+  };
+
   render() {
     console.log("IS IT AN ARRAY?:", this.state.clicked);
     return (
@@ -212,15 +220,6 @@ class PostCard extends React.Component {
                 <span className="text-muted">{this.props.updatedDate}</span>
               </Col>
               <Col className="float-right" xs={1}>
-                {/* <EditPostModal
-                      formType="edit"
-                      selectImage={this.selectImage}
-                      inputFile={this.inputFile}
-                      handleDelete={this.deletePost}
-                      handleSubmit={this.editPost}
-                      handleChange={this.handleChange}                      
-                    /> */}
-
                 <DropdownButton
                   className="getPost-dropDown-button rounded-circle"
                   as={InputGroup.Prepend}
@@ -332,7 +331,7 @@ class PostCard extends React.Component {
                           className="getPost-commentInput"
                           // value={this.state.new.comment}
                           id="comment"
-                          onChange={this.handleChange}
+                          onChange={this.commentChange}
                           as="textarea"
                           aria-label="Text input with checkbox"
                           placeholder="Add a comment..."
