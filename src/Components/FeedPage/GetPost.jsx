@@ -1,19 +1,24 @@
 import "./Post.css";
 import React from "react";
 import PostCard from "./PostCard.jsx";
+import { Spinner } from "react-bootstrap";
 
 class GetPosts extends React.Component {
   state = {
     posts: [],
+    isLoading: false,
   };
 
   componentDidMount = async () => {
+    this.setState({
+      isLoading: true,
+    });
     try {
       const response = await fetch(`https://api-linkedin-api.herokuapp.com/posts`);
       if (response.ok) {
         const data = await response.json();
         console.log(data);
-        this.setState({ posts: data });
+        this.setState({ posts: data, isLoading: false });
       }
     } catch (error) {
       console.log(error);
@@ -23,6 +28,13 @@ class GetPosts extends React.Component {
   render() {
     return (
       <>
+        <div>
+          {this.state.isLoading && (
+            <Spinner animation="border" role="status">
+              {/* <span className="sr-only"></span> */}
+            </Spinner>
+          )}
+        </div>
         {this.state.posts
           .slice(-7)
           .reverse()

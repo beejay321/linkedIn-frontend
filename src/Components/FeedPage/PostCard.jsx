@@ -24,6 +24,19 @@ class PostCard extends React.Component {
     this.getComments();
   };
 
+
+  
+
+  componentDidUpdate(prevProps) {
+    // Typical usage (don't forget to compare props):
+    if (this.props.id !== prevProps.id) {
+      this.grabLikes(this.props.id);
+      this.deletePost()
+      this.editPost()
+      this.addComment()
+    }
+  }
+
   editPost = async (e) => {
     e.preventDefault();
     try {
