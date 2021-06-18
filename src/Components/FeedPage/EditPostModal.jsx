@@ -20,7 +20,7 @@ class EditPostModal extends Component {
     return (
       <>
         <span variant="outline" size="md" className="text-muted " onClick={this.onClickButton}>
-          <i className="bi bi-pencil-square"></i>
+          <i className="bi bi-pencil-square"></i>Edit
         </span>
 
         <Modal show={this.state.openModal} onHide={this.onCloseModal}>
