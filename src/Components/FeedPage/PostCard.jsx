@@ -201,6 +201,7 @@ class PostCard extends React.Component {
               <Card.Img className="postImg" src={this.props.postimage} />
             </div>{" "}
             <hr className="text-muted my-0 py-0" />
+            <Col className="getPost-comment-section ">
               <span>
                 <span className="feeds-group-icons-like">see likes</span>
                 <div className="feeds-like-reactions">
@@ -214,7 +215,6 @@ class PostCard extends React.Component {
                   })}
                 </div>
               </span>
-            <Col className="getPost-comment-section ">
 
               <Button className="getPost-like-btn mx-1" onClick={() => this.addLike(this.props.id)}>
                 <Row>
@@ -225,6 +225,7 @@ class PostCard extends React.Component {
               </Button>
 
               <Accordion.Toggle as={Button} variant="link" eventKey="1">
+
                 <Button className="getPost-comment-btn mx-1">
                   <Row>
                     <span>
